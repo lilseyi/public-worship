@@ -2,13 +2,12 @@
 import Button from "../ui/Button.astro";
 import Eyebrow from "../ui/Eyebrow.astro";
 import Container from "../ui/Container.astro";
+import { asset } from "../../lib/asset";
 ---
 
 <section class="relative pt-6 pb-12 sm:pt-12 sm:pb-20 overflow-hidden">
-  {/* Decorative scattered icons — desktop only, hidden on small screens.
-      Each gets a subtle rotation matching the original's transform tilts. */}
   <img
-    src="/decor/flag.svg"
+    src={asset("/decor/flag.svg")}
     alt=""
     aria-hidden="true"
     data-animate="hero-object"
@@ -16,7 +15,7 @@ import Container from "../ui/Container.astro";
     class="hidden md:block absolute left-[7%] top-[12%] h-[110px] w-auto lg:h-[130px] origin-center"
   />
   <img
-    src="/decor/idea.svg"
+    src={asset("/decor/idea.svg")}
     alt=""
     aria-hidden="true"
     data-animate="hero-object"
@@ -24,7 +23,7 @@ import Container from "../ui/Container.astro";
     class="hidden md:block absolute right-[8%] top-[10%] h-[110px] w-auto lg:h-[130px] origin-center"
   />
   <img
-    src="/decor/heart.svg"
+    src={asset("/decor/heart.svg")}
     alt=""
     aria-hidden="true"
     data-animate="hero-object"
@@ -32,7 +31,7 @@ import Container from "../ui/Container.astro";
     class="hidden md:block absolute left-[5%] top-[55%] h-[120px] w-auto lg:h-[150px] origin-center"
   />
   <img
-    src="/decor/sunny.svg"
+    src={asset("/decor/sunny.svg")}
     alt=""
     aria-hidden="true"
     data-animate="hero-object"
@@ -40,11 +39,10 @@ import Container from "../ui/Container.astro";
     class="hidden md:block absolute right-[7%] top-[55%] h-[110px] w-auto lg:h-[140px] origin-center"
   />
 
-  {/* Mobile: a small decorative cluster above the heading */}
   <div class="md:hidden flex justify-center gap-3 mb-6 px-5">
-    <img src="/decor/flag.svg" alt="" aria-hidden="true" class="h-12 w-12" />
-    <img src="/decor/heart.svg" alt="" aria-hidden="true" class="h-12 w-12" />
-    <img src="/decor/sunny.svg" alt="" aria-hidden="true" class="h-12 w-12" />
+    <img src={asset("/decor/flag.svg")} alt="" aria-hidden="true" class="h-12 w-12" />
+    <img src={asset("/decor/heart.svg")} alt="" aria-hidden="true" class="h-12 w-12" />
+    <img src={asset("/decor/sunny.svg")} alt="" aria-hidden="true" class="h-12 w-12" />
   </div>
 
   <Container size="default" class="relative">
@@ -78,11 +76,10 @@ import Container from "../ui/Container.astro";
     </div>
   </Container>
 
-  {/* Hero photo — real event photo */}
   <Container size="wide" class="mt-12 sm:mt-16">
     <div class="overflow-hidden rounded-3xl" data-animate="fade-up">
       <img
-        src="/images/event-1.png"
+        src={asset("/images/event-1.png")}
         alt="Public Worship gathering in the city"
         class="w-full h-auto block"
         width="1600"

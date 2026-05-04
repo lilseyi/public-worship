@@ -1,4 +1,6 @@
 ---
+import { asset } from "../../lib/asset";
+
 export interface Props {
   brand?: "public-worship" | "global-echo";
   class?: string;
@@ -10,7 +12,7 @@ const { brand = "public-worship", class: className = "" } = Astro.props;
 {
   brand === "public-worship" ? (
     <img
-      src="/images/pw-logo-words.png"
+      src={asset("/images/pw-logo-words.png")}
       alt="Public Worship"
       class={`block h-9 w-auto ${className}`}
       width="1200"

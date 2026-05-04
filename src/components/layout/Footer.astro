@@ -1,6 +1,7 @@
 ---
 import Container from "../ui/Container.astro";
 import Logo from "../icons/Logo.astro";
+import { asset } from "../../lib/asset";
 
 export interface Props {
   brand?: "public-worship" | "global-echo";
@@ -17,9 +18,9 @@ const navLinks = [
 ];
 
 const socials = [
-  { label: "Facebook", href: "https://facebook.com/", icon: "/icons/facebook.svg" },
-  { label: "Twitter", href: "https://twitter.com/", icon: "/icons/twitter.svg" },
-  { label: "LinkedIn", href: "https://linkedin.com/", icon: "/icons/linkedin.svg" },
+  { label: "Facebook", href: "https://facebook.com/", icon: asset("/icons/facebook.svg") },
+  { label: "Twitter", href: "https://twitter.com/", icon: asset("/icons/twitter.svg") },
+  { label: "LinkedIn", href: "https://linkedin.com/", icon: asset("/icons/linkedin.svg") },
 ];
 ---
 

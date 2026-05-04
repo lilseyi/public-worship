@@ -2,6 +2,7 @@
 import Container from "../ui/Container.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 import Button from "../ui/Button.astro";
+import { asset } from "../../lib/asset";
 
 export interface Props {
   eyebrow?: string;
@@ -10,7 +11,11 @@ export interface Props {
 
 const { eyebrow = "Join the Movement", showCards = true } = Astro.props;
 
-const cardImages = ["/images/event-1.png", "/images/event-2.png", "/images/event-3.png"];
+const cardImages = [
+  asset("/images/event-1.png"),
+  asset("/images/event-2.png"),
+  asset("/images/event-3.png"),
+];
 const cardRotations = ["-rotate-2", "rotate-1", "rotate-2"];
 ---
 
