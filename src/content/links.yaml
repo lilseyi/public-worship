@@ -1,0 +1,54 @@
+# =====================================================================
+# IMPORTANT LINKS — homepage Links section
+# =====================================================================
+# How to add a link:
+#   1. Drop the thumbnail image into /public/links/ (any image format).
+#   2. Add a new block below — copy/paste an existing one and edit the
+#      five fields. The id should be a short slug, unique across links.
+#   3. Reorder by moving the block up or down.
+#   4. Commit. The site rebuilds automatically (~30s).
+#
+# Required fields: id, title, url, thumbnail
+# Optional fields: subtitle, cta (button label, default "Open"),
+#                  featured (true|false, makes the card larger)
+# =====================================================================
+
+- id: givebutter
+  title: Donate via GiveButter
+  subtitle: Tax-deductible giving through our 501(c)(3)
+  url: https://givebutter.com/publicworship
+  thumbnail: /links/givebutter.svg
+  cta: Give now
+  featured: true
+
+- id: zelle
+  title: Send via Zelle
+  subtitle: give@publicworship.life
+  url: mailto:give@publicworship.life
+  thumbnail: /links/zelle.svg
+  cta: Open email
+  featured: false
+
+- id: instagram
+  title: "@publicworship.life"
+  subtitle: Follow us on Instagram
+  url: https://instagram.com/publicworship.life
+  thumbnail: /links/instagram.svg
+  cta: Follow
+  featured: false
+
+- id: tiktok
+  title: "@publicworship.life"
+  subtitle: Follow us on TikTok
+  url: https://www.tiktok.com/@publicworship.life
+  thumbnail: /links/tiktok.svg
+  cta: Follow
+  featured: false
+
+- id: partiful
+  title: Upcoming Events
+  subtitle: RSVP via Partiful
+  url: https://partiful.com/u/publicworship
+  thumbnail: /links/partiful.svg
+  cta: See events
+  featured: false

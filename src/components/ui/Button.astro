@@ -1,0 +1,54 @@
+---
+export interface Props {
+  href?: string;
+  variant?: "primary" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+  class?: string;
+  type?: "button" | "submit";
+  external?: boolean;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  class: className = "",
+  type = "button",
+  external = false,
+} = Astro.props;
+
+const variants = {
+  primary:
+    "bg-red-500 text-white hover:bg-red-600 active:bg-red-700 shadow-soft",
+  outline:
+    "bg-transparent text-red-500 border border-red-500 hover:bg-red-50 active:bg-red-100",
+  ghost: "bg-transparent text-ink hover:text-red-500",
+};
+
+const sizes = {
+  sm: "px-4 py-1.5 text-sm",
+  md: "px-5 py-2.5 text-[0.95rem]",
+  lg: "px-7 py-3 text-base",
+};
+
+const base =
+  "inline-flex items-center justify-center gap-2 rounded-pill font-medium leading-none transition-all duration-150 disabled:opacity-60 disabled:pointer-events-none";
+
+const cls = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
+
+const externalAttrs = external
+  ? { target: "_blank", rel: "noopener noreferrer" }
+  : {};
+---
+
+{
+  href ? (
+    <a href={href} class={cls} {...externalAttrs}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={cls}>
+      <slot />
+    </button>
+  )
+}

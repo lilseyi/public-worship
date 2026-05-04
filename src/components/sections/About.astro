@@ -1,0 +1,40 @@
+---
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+const blocks = [
+  {
+    title: "Mission",
+    body: "We exist to create holy musical experiences in public spaces — moments where the seeds of faith are planted in good soil. Our work is to set the table for encounters with Jesus that move people from curiosity into deep, lifelong worship.",
+  },
+  {
+    title: "Vision",
+    body: "A world where nobody is ignorant to who Jesus is and how He asks us to worship Him. We dream of bold, ordinary worship in every public square, on every train, in every park.",
+  },
+  {
+    title: "Why public",
+    body: "Jesus met people where they were — in streets, on hillsides, beside lakes. The church is not bound to a building. We bring worship outside its walls so that the curious, the wandering, and the hungry can stumble into the presence of God.",
+  },
+];
+---
+
+<section id="about" class="py-20 sm:py-28 scroll-mt-16">
+  <Container size="default">
+    <SectionHeading eyebrow="About Us" align="center">
+      Uniting Hearts, <span class="text-red-500">Changing Lives</span>
+    </SectionHeading>
+
+    <div class="mt-14 grid gap-10 md:grid-cols-3">
+      {
+        blocks.map((b) => (
+          <div class="flex flex-col gap-3 text-center md:text-left">
+            <h3 class="font-display text-2xl font-semibold text-ink">
+              {b.title}
+            </h3>
+            <p class="text-ink/75 leading-relaxed">{b.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</section>

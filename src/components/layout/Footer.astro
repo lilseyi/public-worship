@@ -1,0 +1,78 @@
+---
+import Container from "../ui/Container.astro";
+import Logo from "../icons/Logo.astro";
+
+export interface Props {
+  brand?: "public-worship" | "global-echo";
+}
+
+const { brand = "public-worship" } = Astro.props;
+const home = brand === "global-echo" ? "/ge" : "/";
+
+const navLinks = [
+  { label: "About", href: `${home}#about` },
+  { label: "Impact", href: `${home}#impact` },
+  { label: "Links", href: `${home}#links` },
+  { label: "FAQ", href: `${home}#faq` },
+];
+---
+
+<footer class="mt-20">
+  <div class="relative">
+    {/* Wavy striped band — decorative */}
+    <div
+      class="relative overflow-hidden rounded-t-3xl mx-3 sm:mx-6 bg-sky px-6 pt-14 pb-10 sm:pt-20"
+      aria-hidden="false"
+    >
+      <svg
+        class="absolute inset-0 h-full w-full opacity-80"
+        viewBox="0 0 1200 320"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          fill="#F0BFB7"
+          d="M0,260 C300,180 600,360 900,260 C1100,200 1180,280 1200,260 L1200,320 L0,320 Z"
+        ></path>
+        <path
+          fill="#F0BFB7"
+          opacity="0.6"
+          d="M0,180 C200,120 500,260 800,180 C1000,130 1100,200 1200,180 L1200,300 L0,300 Z"
+        ></path>
+      </svg>
+      <Container size="wide" class="relative">
+        <div class="flex flex-col items-center gap-8">
+          <a href={home} aria-label="Home">
+            <Logo brand={brand} />
+          </a>
+          <nav
+            class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3"
+            aria-label="Footer navigation"
+          >
+            {
+              navLinks.map((l) => (
+                <a href={l.href} class="font-medium text-ink hover:text-red-500">
+                  {l.label}
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+      </Container>
+    </div>
+
+    <div class="mx-3 sm:mx-6 -mt-1 rounded-b-3xl bg-pink-band/80">
+      <Container
+        size="wide"
+        class="flex flex-col sm:flex-row items-center justify-between gap-3 px-6 py-4 text-sm text-ink/80"
+      >
+        <span>© 2025, All Rights Reserved</span>
+        <a
+          href="/beliefs"
+          class="text-red-600 underline-offset-2 hover:underline"
+          >Statement of Beliefs</a
+        >
+      </Container>
+    </div>
+  </div>
+</footer>

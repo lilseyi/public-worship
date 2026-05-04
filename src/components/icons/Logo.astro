@@ -1,0 +1,38 @@
+---
+export interface Props {
+  brand?: "public-worship" | "global-echo";
+  class?: string;
+}
+
+const { brand = "public-worship", class: className = "" } = Astro.props;
+---
+
+{
+  brand === "public-worship" ? (
+    <span class={`inline-flex items-center gap-2 ${className}`}>
+      <svg
+        viewBox="0 0 32 32"
+        class="h-7 w-7 text-red-500"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M16 3c-3.5 0-6 2.5-6 5.5 0 2.6 1.7 4.6 3.6 6.2-2.1 2-3.6 4.5-3.6 7.3 0 4 2.7 7 6 7s6-3 6-7c0-2.8-1.5-5.3-3.6-7.3 1.9-1.6 3.6-3.6 3.6-6.2C22 5.5 19.5 3 16 3zm0 19.5c-1.4 0-2.5-1.4-2.5-3.2s1.1-3.2 2.5-3.2 2.5 1.4 2.5 3.2-1.1 3.2-2.5 3.2z" />
+      </svg>
+      <span class="font-display font-semibold text-ink leading-none">
+        <span class="block text-[0.65rem] uppercase tracking-wider text-ink/60">
+          Public
+        </span>
+        <span class="block text-lg leading-tight">Worship</span>
+      </span>
+    </span>
+  ) : (
+    <span class={`inline-flex flex-col leading-none ${className}`}>
+      <span class="font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] text-ink">
+        Global
+      </span>
+      <span class="font-display text-[0.65rem] font-bold uppercase tracking-[0.2em] text-ink">
+        Echo
+      </span>
+    </span>
+  )
+}

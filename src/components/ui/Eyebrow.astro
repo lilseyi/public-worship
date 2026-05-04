@@ -1,0 +1,14 @@
+---
+import SparkleIcon from "../icons/SparkleIcon.astro";
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<span class={`pw-eyebrow ${className}`}>
+  <SparkleIcon class="h-3 w-3" />
+  <slot />
+</span>

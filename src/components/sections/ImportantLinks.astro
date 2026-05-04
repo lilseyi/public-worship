@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import LinkCard from "../ui/LinkCard.astro";
+
+const entries = await getCollection("links");
+---
+
+<section id="links" class="py-20 sm:py-28 scroll-mt-16">
+  <Container size="default">
+    <SectionHeading eyebrow="Resources" align="center">
+      Important <span class="text-red-500">Links</span>
+    </SectionHeading>
+
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        entries.map((entry) => (
+          <LinkCard
+            title={entry.data.title}
+            subtitle={entry.data.subtitle}
+            url={entry.data.url}
+            thumbnail={entry.data.thumbnail}
+            cta={entry.data.cta}
+            featured={entry.data.featured}
+          />
+        ))
+      }
+    </div>
+  </Container>
+</section>

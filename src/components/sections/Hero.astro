@@ -1,0 +1,84 @@
+---
+import Button from "../ui/Button.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
+import Container from "../ui/Container.astro";
+---
+
+<section class="relative pt-6 pb-12 sm:pt-12 sm:pb-20 overflow-hidden">
+  {/* Decorative scattered icons — desktop only, hidden on small screens */}
+  <img
+    src="/decor/flag.svg"
+    alt=""
+    aria-hidden="true"
+    class="hidden md:block absolute left-[8%] top-[8%] h-20 w-20 lg:h-24 lg:w-24"
+  />
+  <img
+    src="/decor/lightbulb.svg"
+    alt=""
+    aria-hidden="true"
+    class="hidden md:block absolute right-[10%] top-[10%] h-20 w-20 lg:h-24 lg:w-24"
+  />
+  <img
+    src="/decor/heart.svg"
+    alt=""
+    aria-hidden="true"
+    class="hidden md:block absolute left-[6%] top-[60%] h-20 w-20 lg:h-28 lg:w-28"
+  />
+  <img
+    src="/decor/sun.svg"
+    alt=""
+    aria-hidden="true"
+    class="hidden md:block absolute right-[8%] top-[58%] h-24 w-24 lg:h-28 lg:w-28"
+  />
+
+  {/* Mobile: a small decorative cluster above the heading */}
+  <div class="md:hidden flex justify-center gap-3 mb-6 px-5">
+    <img src="/decor/flag.svg" alt="" aria-hidden="true" class="h-12 w-12" />
+    <img src="/decor/heart.svg" alt="" aria-hidden="true" class="h-12 w-12" />
+    <img src="/decor/sun.svg" alt="" aria-hidden="true" class="h-12 w-12" />
+  </div>
+
+  <Container size="default" class="relative">
+    <div class="flex flex-col items-center text-center gap-6">
+      <Eyebrow>Looking Ahead</Eyebrow>
+
+      <h1
+        class="font-display font-semibold text-ink leading-[1.05] text-4xl sm:text-5xl md:text-6xl max-w-3xl"
+      >
+        Together, Let's Forge a Future of
+        <span class="text-red-500">Bold and Radical Jesus Worship</span>
+      </h1>
+
+      <p class="max-w-prose text-base sm:text-lg text-ink/70">
+        Uniting cultures, languages, and walks of life through the boldness of
+        Christ. We believe that public worship is one of the most beautiful
+        ways to fulfill the vision of Revelation 7:9.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <Button
+          href="https://givebutter.com/publicworship"
+          variant="primary"
+          size="lg"
+          external
+        >
+          Make a Donation
+        </Button>
+        <Button href="#about" variant="outline" size="lg">Learn More</Button>
+      </div>
+    </div>
+  </Container>
+
+  {/* Hero photo */}
+  <Container size="wide" class="mt-12 sm:mt-16">
+    <div class="overflow-hidden rounded-3xl">
+      <img
+        src="/images/hero-photo-placeholder.svg"
+        alt="Public worship gathering in the city"
+        class="w-full h-auto block"
+        width="1200"
+        height="700"
+      />
+    </div>
+  </Container>
+</section>

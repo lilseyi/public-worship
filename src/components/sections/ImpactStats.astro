@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import StatCard from "../ui/StatCard.astro";
+
+const stats = await getCollection("impact");
+---
+
+<section id="impact" class="py-20 sm:py-28 scroll-mt-16">
+  <Container size="default">
+    <SectionHeading eyebrow="Impact" align="center">
+      <span class="text-red-500">Transformative Impact</span> of Our Hard Work
+    </SectionHeading>
+
+    <div class="mt-14 grid gap-10 sm:grid-cols-3">
+      {
+        stats.map((s) => (
+          <StatCard
+            value={s.data.value}
+            label={s.data.label}
+            sublabel={s.data.sublabel}
+          />
+        ))
+      }
+    </div>
+  </Container>
+</section>

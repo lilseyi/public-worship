@@ -1,0 +1,42 @@
+---
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import Button from "../ui/Button.astro";
+
+export interface Props {
+  eyebrow?: string;
+  showCards?: boolean;
+}
+
+const { eyebrow = "Join the Movement", showCards = true } = Astro.props;
+---
+
+<section class="py-20 sm:py-28">
+  <Container size="default">
+    <div class="flex flex-col items-center text-center gap-6">
+      <SectionHeading eyebrow={eyebrow} align="center">
+        Be Bold, <span class="text-red-500">Make a Difference</span>
+      </SectionHeading>
+
+      <Button
+        href="https://givebutter.com/publicworship"
+        variant="primary"
+        size="lg"
+        external
+        class="mt-2"
+      >
+        Make a Donation
+      </Button>
+    </div>
+
+    {
+      showCards && (
+        <div class="mt-14 grid gap-4 sm:grid-cols-3">
+          <div class="aspect-square rounded-3xl bg-pink-softer" />
+          <div class="aspect-square rounded-3xl bg-red-500" />
+          <div class="aspect-square rounded-3xl bg-pink-soft" />
+        </div>
+      )
+    }
+  </Container>
+</section>

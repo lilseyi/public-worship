@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import About from "../components/sections/About.astro";
+import ImpactStats from "../components/sections/ImpactStats.astro";
+import ImportantLinks from "../components/sections/ImportantLinks.astro";
+import FaqList from "../components/sections/FaqList.astro";
+import DonateCta from "../components/sections/DonateCta.astro";
+---
+
+<BaseLayout
+  title="Bringing God's presence into public spaces"
+  description="Public Worship is a non-profit bringing bold, public Jesus worship into the streets, parks, and trains of New York City."
+>
+  <Hero />
+  <ImportantLinks />
+  <About />
+  <DonateCta />
+  <ImpactStats />
+  <FaqList />
+</BaseLayout>

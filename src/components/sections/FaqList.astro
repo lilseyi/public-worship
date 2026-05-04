@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+import FaqItem from "../ui/FaqItem.astro";
+import { renderMarkdown } from "../../lib/markdown";
+
+const entries = await getCollection("faqs");
+---
+
+<section id="faq" class="py-20 sm:py-28 scroll-mt-16">
+  <Container size="default">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:items-start">
+      <SectionHeading eyebrow="FAQ" align="left">
+        Answers to Your <span class="text-red-500">Burning Questions</span>
+      </SectionHeading>
+
+      <div>
+        {
+          entries.map((entry) => (
+            <FaqItem
+              question={entry.data.question}
+              answerHtml={renderMarkdown(entry.data.answer)}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>

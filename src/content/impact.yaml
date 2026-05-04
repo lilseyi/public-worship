@@ -1,0 +1,18 @@
+# =====================================================================
+# Impact stats — homepage "Transformative Impact" section
+# =====================================================================
+
+- id: reach
+  value: "700,000+"
+  label: People reached
+  sublabel: Across Instagram and TikTok
+
+- id: events
+  value: "15+"
+  label: Worship events
+  sublabel: Across the NYC area
+
+- id: team
+  value: "10+"
+  label: Team members
+  sublabel: Creatives and mission-driven people

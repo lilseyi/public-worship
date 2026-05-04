@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-body text-ink antialiased;
+    background-image:
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(208, 58, 58, 0.025) 0%,
+        transparent 60%
+      );
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-red-500/60 ring-offset-2 ring-offset-cream rounded-sm;
+  }
+}
+
+@layer components {
+  .pw-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-pill bg-pink-softer px-4 py-1.5
+           text-sm font-medium text-red-500;
+  }
+
+  .pw-prose a {
+    @apply text-red-500 underline decoration-red-200 underline-offset-2 hover:decoration-red-500;
+  }
+
+  .pw-prose p + p {
+    @apply mt-4;
+  }
+}
+
+@layer utilities {
+  .pw-topo-bg {
+    background-image: url("/textures/topo.svg");
+    background-repeat: repeat;
+    background-size: 600px;
+    background-blend-mode: multiply;
+  }
+}
+
+/* Display font: Fraunces (variable, soft optical sizing for headlines).
+   Body font: Inter. Both via Google Fonts CDN, preconnected in BaseLayout. */
