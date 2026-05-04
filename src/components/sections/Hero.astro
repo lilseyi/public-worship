@@ -5,45 +5,54 @@ import Container from "../ui/Container.astro";
 ---
 
 <section class="relative pt-6 pb-12 sm:pt-12 sm:pb-20 overflow-hidden">
-  {/* Decorative scattered icons — desktop only, hidden on small screens */}
+  {/* Decorative scattered icons — desktop only, hidden on small screens.
+      Each gets a subtle rotation matching the original's transform tilts. */}
   <img
     src="/decor/flag.svg"
     alt=""
     aria-hidden="true"
-    class="hidden md:block absolute left-[8%] top-[8%] h-20 w-20 lg:h-24 lg:w-24"
+    data-animate="hero-object"
+    style="--rot: -20deg;"
+    class="hidden md:block absolute left-[7%] top-[12%] h-[110px] w-auto lg:h-[130px] origin-center"
   />
   <img
-    src="/decor/lightbulb.svg"
+    src="/decor/idea.svg"
     alt=""
     aria-hidden="true"
-    class="hidden md:block absolute right-[10%] top-[10%] h-20 w-20 lg:h-24 lg:w-24"
+    data-animate="hero-object"
+    style="--rot: 30deg;"
+    class="hidden md:block absolute right-[8%] top-[10%] h-[110px] w-auto lg:h-[130px] origin-center"
   />
   <img
     src="/decor/heart.svg"
     alt=""
     aria-hidden="true"
-    class="hidden md:block absolute left-[6%] top-[60%] h-20 w-20 lg:h-28 lg:w-28"
+    data-animate="hero-object"
+    style="--rot: 15deg;"
+    class="hidden md:block absolute left-[5%] top-[55%] h-[120px] w-auto lg:h-[150px] origin-center"
   />
   <img
-    src="/decor/sun.svg"
+    src="/decor/sunny.svg"
     alt=""
     aria-hidden="true"
-    class="hidden md:block absolute right-[8%] top-[58%] h-24 w-24 lg:h-28 lg:w-28"
+    data-animate="hero-object"
+    style="--rot: -15deg;"
+    class="hidden md:block absolute right-[7%] top-[55%] h-[110px] w-auto lg:h-[140px] origin-center"
   />
 
   {/* Mobile: a small decorative cluster above the heading */}
   <div class="md:hidden flex justify-center gap-3 mb-6 px-5">
     <img src="/decor/flag.svg" alt="" aria-hidden="true" class="h-12 w-12" />
     <img src="/decor/heart.svg" alt="" aria-hidden="true" class="h-12 w-12" />
-    <img src="/decor/sun.svg" alt="" aria-hidden="true" class="h-12 w-12" />
+    <img src="/decor/sunny.svg" alt="" aria-hidden="true" class="h-12 w-12" />
   </div>
 
   <Container size="default" class="relative">
-    <div class="flex flex-col items-center text-center gap-6">
+    <div class="flex flex-col items-center text-center gap-6" data-animate="fade-up">
       <Eyebrow>Looking Ahead</Eyebrow>
 
       <h1
-        class="font-display font-semibold text-ink leading-[1.05] text-4xl sm:text-5xl md:text-6xl max-w-3xl"
+        class="font-display font-normal text-ink leading-[1.1] text-4xl sm:text-5xl md:text-6xl max-w-3xl"
       >
         Together, Let's Forge a Future of
         <span class="text-red-500">Bold and Radical Jesus Worship</span>
@@ -69,15 +78,17 @@ import Container from "../ui/Container.astro";
     </div>
   </Container>
 
-  {/* Hero photo */}
+  {/* Hero photo — real event photo */}
   <Container size="wide" class="mt-12 sm:mt-16">
-    <div class="overflow-hidden rounded-3xl">
+    <div class="overflow-hidden rounded-3xl" data-animate="fade-up">
       <img
-        src="/images/hero-photo-placeholder.svg"
-        alt="Public worship gathering in the city"
+        src="/images/event-1.png"
+        alt="Public Worship gathering in the city"
         class="w-full h-auto block"
-        width="1200"
-        height="700"
+        width="1600"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
       />
     </div>
   </Container>

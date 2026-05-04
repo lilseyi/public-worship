@@ -29,8 +29,8 @@ export default {
         sky: "#D6E5F2",
       },
       fontFamily: {
-        display: ["'Fraunces'", "'Times New Roman'", "serif"],
-        body: ["'Inter'", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["'Corben'", "Georgia", "serif"],
+        body: ["'DM Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       maxWidth: {
         content: "72rem",

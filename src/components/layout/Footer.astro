@@ -15,14 +15,18 @@ const navLinks = [
   { label: "Links", href: `${home}#links` },
   { label: "FAQ", href: `${home}#faq` },
 ];
+
+const socials = [
+  { label: "Facebook", href: "https://facebook.com/", icon: "/icons/facebook.svg" },
+  { label: "Twitter", href: "https://twitter.com/", icon: "/icons/twitter.svg" },
+  { label: "LinkedIn", href: "https://linkedin.com/", icon: "/icons/linkedin.svg" },
+];
 ---
 
 <footer class="mt-20">
   <div class="relative">
-    {/* Wavy striped band — decorative */}
     <div
       class="relative overflow-hidden rounded-t-3xl mx-3 sm:mx-6 bg-sky px-6 pt-14 pb-10 sm:pt-20"
-      aria-hidden="false"
     >
       <svg
         class="absolute inset-0 h-full w-full opacity-80"
@@ -57,6 +61,23 @@ const navLinks = [
               ))
             }
           </nav>
+          <ul class="flex items-center gap-4">
+            {
+              socials.map((s) => (
+                <li>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/60 hover:bg-white"
+                  >
+                    <img src={s.icon} alt="" aria-hidden="true" class="h-4 w-4" />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
         </div>
       </Container>
     </div>

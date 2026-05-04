@@ -33,7 +33,7 @@
   title: "@publicworship.life"
   subtitle: Follow us on Instagram
   url: https://instagram.com/publicworship.life
-  thumbnail: /links/instagram.svg
+  thumbnail: /links/instagram-photo.png
   cta: Follow
   featured: false
 
@@ -41,7 +41,7 @@
   title: "@publicworship.life"
   subtitle: Follow us on TikTok
   url: https://www.tiktok.com/@publicworship.life
-  thumbnail: /links/tiktok.svg
+  thumbnail: /links/tiktok-photo.png
   cta: Follow
   featured: false
 
