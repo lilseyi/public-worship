@@ -14,41 +14,17 @@
 # =====================================================================
 
 - id: givebutter
-  title: Donate via GiveButter
-  subtitle: Tax-deductible giving through our 501(c)(3)
+  title: Donate
+  subtitle: "(Card, Apple Pay, Venmo, ACH)"
   url: https://givebutter.com/publicworship
   thumbnail: /links/givebutter.svg
   cta: Give now
-  featured: true
+  featured: false
 
 - id: zelle
-  title: Send via Zelle
+  title: Donate Through Zelle
   subtitle: give@publicworship.life
   url: mailto:give@publicworship.life
   thumbnail: /links/zelle.svg
-  cta: Open email
-  featured: false
-
-- id: instagram
-  title: "@publicworship.life"
-  subtitle: Follow us on Instagram
-  url: https://instagram.com/publicworship.life
-  thumbnail: /links/instagram-photo.png
-  cta: Follow
-  featured: false
-
-- id: tiktok
-  title: "@publicworship.life"
-  subtitle: Follow us on TikTok
-  url: https://www.tiktok.com/@publicworship.life
-  thumbnail: /links/tiktok-photo.png
-  cta: Follow
-  featured: false
-
-- id: partiful
-  title: Upcoming Events
-  subtitle: RSVP via Partiful
-  url: https://partiful.com/u/publicworship
-  thumbnail: /links/partiful.svg
-  cta: See events
+  cta: "(Click to Copy)"
   featured: false

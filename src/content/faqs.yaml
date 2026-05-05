@@ -4,28 +4,30 @@
 # Markdown is supported in `answer`. Use \n for line breaks.
 # =====================================================================
 
-- id: how-to-help
-  question: How do I get involved?
+- id: how-to-get-involved
+  question: How can I get involved?
   answer: |
-    There are three main ways to plug in. Fill out our [volunteer
-    interest form](https://forms.gle/) so we know your gifts and how to
-    reach you when the right need arises. Donate — every gift helps us
-    fund equipment, travel, and food for the team. Or just amplify what
-    we're doing on social by sharing our posts and inviting friends.
+    We welcome individuals who are passionate about worship and Jesus to
+    join us! You can get involved by volunteering your time, donating to
+    support our programs, or keeping track with our events and amplifying
+    them on your social media pages.
 
-- id: where-money-goes
-  question: How does my donation get used?
+    [Fill out this form](https://forms.gle/) if you are interested in
+    volunteering your time.
+
+- id: how-donations-used
+  question: How are donations used?
   answer: |
-    Donations cover the real costs of putting on a worship event:
-    equipment (mics, speakers, cameras), transportation to and from
-    venues, food for our volunteer team, and the editing software and
-    storage we need to publish content afterward.
+    Your donations play a crucial role in supporting our mission. They
+    are used to fund our various projects we execute on to reach people
+    through worship. This includes things such as purchasing equipment,
+    transportation, and food for volunteers.
 
 - id: church-affiliation
-  question: Is Public Worship affiliated with a specific church?
+  question: Are you a part of a church?
   answer: |
-    No. We are not affiliated with any specific church, denomination,
-    or political group. We are a nonprofit rooted in Biblical
-    Christianity. Several of our founding members are active in
-    [FOUNT NYC](https://fount.nyc), but Public Worship itself is
-    independent.
+    We're not affiliated with any specific church, denomination, or
+    political group. We're a nonprofit that is rooted in Biblical
+    Christianity. However many of our founding members are active church
+    leaders in FOUNT NYC. If you want to learn more, visit
+    [www.fount.nyc](https://fount.nyc).

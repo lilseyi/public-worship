@@ -2,28 +2,34 @@
 import Container from "../ui/Container.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 import Button from "../ui/Button.astro";
-import { asset } from "../../lib/asset";
 
 export interface Props {
   eyebrow?: string;
+  heading?: string;
   showCards?: boolean;
 }
 
-const { eyebrow = "Join the Movement", showCards = true } = Astro.props;
-
-const cardImages = [
-  asset("/images/event-1.png"),
-  asset("/images/event-2.png"),
-  asset("/images/event-3.png"),
-];
-const cardRotations = ["-rotate-2", "rotate-1", "rotate-2"];
+const {
+  eyebrow = "Join the Movement",
+  heading,
+  showCards = false,
+} = Astro.props;
 ---
 
 <section class="py-20 sm:py-28">
   <Container size="default">
     <div class="flex flex-col items-center text-center gap-6" data-animate="fade-up">
       <SectionHeading eyebrow={eyebrow} align="center">
-        Be Bold, <span class="text-red-500">Make a Difference</span>
+        {
+          heading ? (
+            <Fragment set:html={heading} />
+          ) : (
+            <Fragment>
+              Be Bold,{" "}
+              <span class="text-red-500">Make a Difference</span>
+            </Fragment>
+          )
+        }
       </SectionHeading>
 
       <Button
@@ -36,29 +42,5 @@ const cardRotations = ["-rotate-2", "rotate-1", "rotate-2"];
         Make a Donation
       </Button>
     </div>
-
-    {
-      showCards && (
-        <div class="mt-14 grid gap-4 sm:grid-cols-3">
-          {cardImages.map((src, i) => (
-            <div
-              class={`overflow-hidden rounded-3xl shadow-soft transform-gpu ${cardRotations[i]}`}
-              data-animate="fade-up"
-              style={`--delay: ${i * 80}ms`}
-            >
-              <img
-                src={src}
-                alt=""
-                class="aspect-square w-full object-cover"
-                loading="eager"
-                decoding="async"
-                width="800"
-                height="800"
-              />
-            </div>
-          ))}
-        </div>
-      )
-    }
   </Container>
 </section>
