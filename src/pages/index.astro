@@ -6,6 +6,7 @@ import ImpactStats from "../components/sections/ImpactStats.astro";
 import ImportantLinks from "../components/sections/ImportantLinks.astro";
 import FaqList from "../components/sections/FaqList.astro";
 import DonateCta from "../components/sections/DonateCta.astro";
+import MidVideo from "../components/sections/MidVideo.astro";
 ---
 
 <BaseLayout
@@ -15,11 +16,13 @@ import DonateCta from "../components/sections/DonateCta.astro";
   <Hero />
   <ImportantLinks />
   <About />
-  <DonateCta showCards={true} />
+  <DonateCta cards="icons" />
   <ImpactStats />
+  <MidVideo />
   <FaqList />
   <DonateCta
     eyebrow="Support"
     heading={`Support Us <span class="text-red-500">Through Your Generosity</span>`}
+    cards="illustrations"
   />
 </BaseLayout>
