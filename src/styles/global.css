@@ -52,7 +52,10 @@
            font-display text-sm font-normal text-red-500;
   }
 
-  .pw-prose a {
+  /* Style inline prose links, but exempt anchors that are styled as buttons
+   * (Button.astro renders <a class="inline-flex ..."> when href is set).
+   * Without this guard, primary buttons embedded in prose render red-on-red. */
+  .pw-prose a:not([class*="inline-flex"]) {
     @apply text-red-500 underline decoration-red-200 underline-offset-2 hover:decoration-red-500;
   }
 
