@@ -5,20 +5,17 @@ import Container from "../ui/Container.astro";
 import { asset } from "../../lib/asset";
 ---
 
-<section class="relative pt-4 pb-10 sm:pt-8 sm:pb-16 overflow-hidden">
-  {/* Decor positions measured from source at 1440 viewport:
-   *   flag  x=338  y=162  120x125  -22°
-   *   idea  x=965  y=142  167x167  +33°
-   *   heart x=231  y=648  206x180  +15°
-   *   sunny x=991  y=621  217x196  -15°
-   * Translated to percentage insets within the section. */}
+<section class="relative pt-12 pb-16 sm:pt-16 sm:pb-20 min-h-[680px] md:min-h-[760px] overflow-hidden">
+  {/* Decor frames the H1+buttons in the four corners of the hero block.
+   * Source places them in the gutters outside the centered content column,
+   * so we use percentage insets that sit OUTSIDE the title's max-width. */}
   <img
     src={asset("/decor/flag.svg")}
     alt=""
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: -22deg;"
-    class="hidden md:block absolute left-[22%] top-[80px] h-[110px] w-auto lg:h-[125px] origin-center"
+    class="hidden md:block absolute left-[8%] lg:left-[14%] top-[110px] lg:top-[120px] h-[110px] w-auto lg:h-[125px] origin-center"
   />
   <img
     src={asset("/decor/idea.svg")}
@@ -26,7 +23,7 @@ import { asset } from "../../lib/asset";
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: 33deg;"
-    class="hidden md:block absolute right-[20%] top-[60px] h-[150px] w-auto lg:h-[167px] origin-center"
+    class="hidden md:block absolute right-[6%] lg:right-[10%] top-[80px] lg:top-[90px] h-[150px] w-auto lg:h-[167px] origin-center"
   />
   <img
     src={asset("/decor/heart.svg")}
@@ -34,7 +31,7 @@ import { asset } from "../../lib/asset";
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: 15deg;"
-    class="hidden md:block absolute left-[14%] top-[460px] h-[160px] w-auto lg:h-[180px] origin-center"
+    class="hidden md:block absolute left-[6%] lg:left-[10%] bottom-[80px] lg:bottom-[60px] h-[170px] w-auto lg:h-[200px] origin-center"
   />
   <img
     src={asset("/decor/sunny.svg")}
@@ -42,7 +39,7 @@ import { asset } from "../../lib/asset";
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: -15deg;"
-    class="hidden md:block absolute right-[14%] top-[440px] h-[170px] w-auto lg:h-[196px] origin-center"
+    class="hidden md:block absolute right-[5%] lg:right-[9%] bottom-[60px] lg:bottom-[40px] h-[180px] w-auto lg:h-[210px] origin-center"
   />
 
   <div class="md:hidden flex justify-center gap-3 mb-6 px-5">
@@ -55,10 +52,10 @@ import { asset } from "../../lib/asset";
     <div class="flex flex-col items-center text-center gap-7" data-animate="fade-up">
       <Eyebrow>Worship with us</Eyebrow>
 
-      {/* H1 size from source: 68px / 1.08. Corben at 700 weight is too heavy
-       * because the font ships only 400 / 700; we keep font-normal here. */}
+      {/* H1 size from source: ~88px on desktop, 1.08 line-height. Corben ships
+       * only 400/700, so font-normal is correct (semibold/medium round to 700). */}
       <h1
-        class="font-display font-normal text-ink leading-[1.08] text-4xl sm:text-5xl md:text-[68px] max-w-3xl"
+        class="font-display font-normal text-ink leading-[1.08] text-4xl sm:text-5xl md:text-[72px] lg:text-[88px] max-w-[820px]"
       >
         Together, Let's Forge a Future of
         <span class="text-red-500">Bold and Radical Jesus Worship</span>
@@ -81,28 +78,6 @@ import { asset } from "../../lib/asset";
         </Button>
         <Button href={asset("/ge")} variant="outline" size="lg">About Public Worship</Button>
       </div>
-    </div>
-  </Container>
-
-  {/* Source video container is roughly 3:2 (1184x792) with 16px radius. */}
-  <Container size="wide" class="mt-12 sm:mt-14">
-    <div
-      class="overflow-hidden rounded-2xl aspect-[3/2] bg-ink/10"
-      data-animate="fade-up"
-    >
-      <video
-        class="block h-full w-full object-cover"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        poster={asset("/images/event-1.png")}
-        aria-hidden="true"
-      >
-        <source src={asset("/videos/hero.webm")} type="video/webm" />
-        <source src={asset("/videos/hero.mp4")} type="video/mp4" />
-      </video>
     </div>
   </Container>
 </section>
