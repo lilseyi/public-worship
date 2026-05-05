@@ -77,11 +77,10 @@ const wavyHref = asset("/decor/wavy-texture.svg");
               <p class="relative z-[1] text-ink/85 leading-relaxed text-[0.95rem] sm:text-base max-w-prose">
                 {cell.body}
               </p>
-              <img
-                src={wavyHref}
-                alt=""
+              <div
                 aria-hidden="true"
-                class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-10 mix-blend-multiply"
+                class="pointer-events-none absolute inset-0 opacity-30 mix-blend-multiply"
+                style={`background-image: url(${wavyHref}); background-size: 1100px 1100px; background-position: center; background-repeat: no-repeat;`}
               />
             </article>
           ) : (
