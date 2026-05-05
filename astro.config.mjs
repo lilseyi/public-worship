@@ -10,5 +10,11 @@ export default defineConfig({
     : "https://lilseyi.github.io",
   base: useCustomDomain ? "/" : "/public-worship",
   trailingSlash: "ignore",
+  redirects: {
+    "/about": "/#about",
+    "/impact": "/#impact",
+    "/links": "/#links",
+    "/faq": "/#faq",
+  },
   integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
 });

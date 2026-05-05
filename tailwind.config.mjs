@@ -27,6 +27,7 @@ export default {
         mint: "#A8D9C4",
         lavender: "#C9A8E0",
         sky: "#D6E5F2",
+        "link-blue": "#4A6BC0",
       },
       fontFamily: {
         display: ["'Corben'", "Georgia", "serif"],

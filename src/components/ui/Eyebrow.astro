@@ -1,14 +1,19 @@
 ---
 import SparkleIcon from "../icons/SparkleIcon.astro";
+import PrayIcon from "../icons/PrayIcon.astro";
 
 export interface Props {
+  icon?: "sparkle" | "pray" | "image";
+  iconSrc?: string;
   class?: string;
 }
 
-const { class: className = "" } = Astro.props;
+const { icon = "sparkle", iconSrc, class: className = "" } = Astro.props;
 ---
 
 <span class={`pw-eyebrow ${className}`}>
-  <SparkleIcon class="h-3 w-3" />
+  {icon === "pray" && <PrayIcon class="h-3.5 w-3.5" />}
+  {icon === "sparkle" && <SparkleIcon class="h-3 w-3" />}
+  {icon === "image" && iconSrc && <img src={iconSrc} alt="" class="h-3.5 w-3.5" />}
   <slot />
 </span>

@@ -5,9 +5,10 @@ export interface Props {
   title: string;
   subtitle?: string;
   url: string;
-  thumbnail: string;
-  cta: string;
-  featured?: boolean;
+  thumbnail?: string;
+  bgImage?: string;
+  cta?: string;
+  align?: "center" | "topLeft";
 }
 
 const {
@@ -15,43 +16,60 @@ const {
   subtitle,
   url,
   thumbnail,
+  bgImage,
   cta,
-  featured = false,
+  align = "center",
 } = Astro.props;
 
-const thumbSrc = asset(thumbnail);
+const thumbSrc = thumbnail ? asset(thumbnail) : null;
+const bgSrc = bgImage ? asset(bgImage) : null;
 
-const isExternal = /^https?:/.test(url);
+const isExternal = /^https?:|^mailto:/.test(url);
 const externalAttrs = isExternal
   ? { target: "_blank", rel: "noopener noreferrer" }
   : {};
+
+const layoutClass =
+  align === "topLeft"
+    ? "items-start text-left p-6 sm:p-8"
+    : "items-center justify-center text-center p-6 sm:p-8";
 ---
 
 <a
   href={url}
   {...externalAttrs}
-  class={`group flex flex-col overflow-hidden rounded-3xl bg-white/70 shadow-soft ring-1 ring-ink/5 transition-all hover:-translate-y-0.5 hover:shadow-lg ${
-    featured ? "sm:col-span-2" : ""
-  }`}
+  class="group relative block aspect-[5/3] overflow-hidden rounded-3xl bg-pink-soft transition-transform hover:-translate-y-0.5"
 >
-  <div class="aspect-[16/9] w-full overflow-hidden bg-pink-softer">
-    <img
-      src={thumbSrc}
-      alt=""
-      loading="lazy"
-      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-      width="640"
-      height="360"
-    />
-  </div>
-  <div class="flex flex-1 flex-col gap-2 p-5">
-    <h3 class="font-display text-xl font-semibold text-ink">{title}</h3>
-    {subtitle && <p class="text-sm text-ink/70">{subtitle}</p>}
-    <span
-      class="mt-3 inline-flex items-center gap-1 self-start text-sm font-medium text-red-500"
-    >
-      {cta}
-      <span aria-hidden="true">→</span>
-    </span>
+  {
+    bgSrc && (
+      <img
+        src={bgSrc}
+        alt=""
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+        decoding="async"
+      />
+    )
+  }
+  <div
+    class={`relative z-[1] flex h-full flex-col gap-1 ${layoutClass} ${
+      align === "center" ? "justify-center" : ""
+    }`}
+  >
+    {
+      thumbSrc && (
+        <img
+          src={thumbSrc}
+          alt=""
+          class="mb-2 h-10 w-auto sm:h-12"
+          loading="lazy"
+        />
+      )
+    }
+    <h3 class="font-display text-xl sm:text-2xl text-link-blue">
+      {title}
+    </h3>
+    {subtitle && <p class="text-sm sm:text-base text-link-blue">{subtitle}</p>}
+    {cta && <p class="text-sm text-link-blue">{cta}</p>}
   </div>
 </a>

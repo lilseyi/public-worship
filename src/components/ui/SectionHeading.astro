@@ -3,6 +3,7 @@ import Eyebrow from "./Eyebrow.astro";
 
 export interface Props {
   eyebrow?: string;
+  eyebrowIcon?: "sparkle" | "pray";
   align?: "left" | "center";
   as?: "h1" | "h2";
   class?: string;
@@ -10,6 +11,7 @@ export interface Props {
 
 const {
   eyebrow,
+  eyebrowIcon = "sparkle",
   align = "center",
   as: Tag = "h2",
   class: className = "",
@@ -24,8 +26,8 @@ const headingSize =
 ---
 
 <div class={`flex flex-col gap-4 ${alignClass} ${className}`}>
-  {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-  <Tag class={`font-display font-semibold leading-[1.05] ${headingSize}`}>
+  {eyebrow && <Eyebrow icon={eyebrowIcon}>{eyebrow}</Eyebrow>}
+  <Tag class={`font-display font-normal leading-[1.05] ${headingSize}`}>
     <slot />
   </Tag>
   {
