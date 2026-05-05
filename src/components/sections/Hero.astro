@@ -6,24 +6,27 @@ import { asset } from "../../lib/asset";
 ---
 
 <section class="relative pt-4 pb-10 sm:pt-8 sm:pb-16 overflow-hidden">
-  {/* Decor objects.
-   * Source positions (1280px viewport) place these near the page edges,
-   * partly off-canvas, with the upper pair pulled above the eyebrow line. */}
+  {/* Decor positions measured from source at 1440 viewport:
+   *   flag  x=338  y=162  120x125  -22°
+   *   idea  x=965  y=142  167x167  +33°
+   *   heart x=231  y=648  206x180  +15°
+   *   sunny x=991  y=621  217x196  -15°
+   * Translated to percentage insets within the section. */}
   <img
     src={asset("/decor/flag.svg")}
     alt=""
     aria-hidden="true"
     data-animate="hero-object"
-    style="--rot: -20deg;"
-    class="hidden md:block absolute left-[2%] top-[60px] h-[110px] w-auto lg:h-[120px] origin-center"
+    style="--rot: -22deg;"
+    class="hidden md:block absolute left-[22%] top-[80px] h-[110px] w-auto lg:h-[125px] origin-center"
   />
   <img
     src={asset("/decor/idea.svg")}
     alt=""
     aria-hidden="true"
     data-animate="hero-object"
-    style="--rot: 30deg;"
-    class="hidden md:block absolute right-[2%] top-[40px] h-[150px] w-auto lg:h-[170px] origin-center"
+    style="--rot: 33deg;"
+    class="hidden md:block absolute right-[20%] top-[60px] h-[150px] w-auto lg:h-[167px] origin-center"
   />
   <img
     src={asset("/decor/heart.svg")}
@@ -31,7 +34,7 @@ import { asset } from "../../lib/asset";
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: 15deg;"
-    class="hidden md:block absolute -left-[60px] top-[58%] h-[170px] w-auto lg:h-[200px] origin-center"
+    class="hidden md:block absolute left-[14%] top-[460px] h-[160px] w-auto lg:h-[180px] origin-center"
   />
   <img
     src={asset("/decor/sunny.svg")}
@@ -39,7 +42,7 @@ import { asset } from "../../lib/asset";
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: -15deg;"
-    class="hidden md:block absolute -right-[60px] top-[58%] h-[170px] w-auto lg:h-[200px] origin-center"
+    class="hidden md:block absolute right-[14%] top-[440px] h-[170px] w-auto lg:h-[196px] origin-center"
   />
 
   <div class="md:hidden flex justify-center gap-3 mb-6 px-5">
