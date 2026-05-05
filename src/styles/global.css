@@ -88,6 +88,7 @@
 
 .js-enabled [data-animate="hero-object"] {
   --rot: 0deg;
+  --pulse-delay: 0s;
   opacity: 0;
   transform: translate3d(0, 16px, 0) rotate(0deg) scale(0.85);
   transition-duration: 900ms;
@@ -96,13 +97,15 @@
 .js-enabled [data-animate="hero-object"][data-animate-in] {
   opacity: 1;
   transform: translate3d(0, 0, 0) rotate(var(--rot)) scale(1);
-  animation: pw-float 6s ease-in-out infinite alternate;
-  animation-delay: 1s;
+  animation: pw-float 0.9s ease-in-out infinite alternate;
+  /* Per-element negative delay (set inline on each decor img) starts the
+   * cycle mid-stride so the four icons pulse out of sync, not in lockstep. */
+  animation-delay: var(--pulse-delay);
 }
 
 @keyframes pw-float {
-  from { transform: translate3d(0, 0, 0) rotate(var(--rot)) scale(1); }
-  to   { transform: translate3d(0, -8px, 0) rotate(calc(var(--rot) + 2deg)) scale(1.02); }
+  from { transform: translate3d(0, -3px, 0) rotate(calc(var(--rot) + 1deg)) scale(0.8); }
+  to   { transform: translate3d(0, 0, 0) rotate(var(--rot)) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
