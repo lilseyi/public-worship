@@ -38,6 +38,7 @@ const layoutClass =
 <a
   href={url}
   {...externalAttrs}
+  aria-label={title}
   class="group relative block aspect-[5/3] overflow-hidden rounded-3xl bg-pink-soft transition-transform hover:-translate-y-0.5"
 >
   {
@@ -51,29 +52,29 @@ const layoutClass =
       />
     )
   }
-  <div
-    class={`relative z-[1] flex h-full flex-col gap-1 ${layoutClass} ${
-      align === "center" ? "justify-center" : ""
-    }`}
-  >
-    {
-      thumbSrc && (
-        <img
-          src={thumbSrc}
-          alt={title}
-          class="max-h-20 sm:max-h-24 w-auto object-contain"
-          loading="lazy"
-        />
-      )
-    }
-    {
-      !thumbSrc && (
-        <h3 class="font-display text-xl sm:text-2xl text-link-blue">
-          {title}
-        </h3>
-      )
-    }
-    {subtitle && <p class="text-sm sm:text-base text-link-blue">{subtitle}</p>}
-    {cta && <p class="text-sm text-link-blue">{cta}</p>}
-  </div>
+  {
+    !bgSrc && (
+      <div
+        class={`relative z-[1] flex h-full flex-col gap-1 ${layoutClass} ${
+          align === "center" ? "justify-center" : ""
+        }`}
+      >
+        {thumbSrc && (
+          <img
+            src={thumbSrc}
+            alt={title}
+            class="max-h-20 sm:max-h-24 w-auto object-contain"
+            loading="lazy"
+          />
+        )}
+        {!thumbSrc && (
+          <h3 class="font-display text-xl sm:text-2xl text-link-blue">
+            {title}
+          </h3>
+        )}
+        {subtitle && <p class="text-sm sm:text-base text-link-blue">{subtitle}</p>}
+        {cta && <p class="text-sm text-link-blue">{cta}</p>}
+      </div>
+    )
+  }
 </a>

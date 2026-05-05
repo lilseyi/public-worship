@@ -16,11 +16,9 @@
 # =====================================================================
 
 - id: eden
-  title: Eden Worship & Picnic
-  subtitle: Public Worship presents
-  url: https://partiful.com/u/publicworship
+  title: Eden Worship & Picnic — Public Worship presents
+  url: https://partiful.com/e/yJRnupvB4MTHSMkN4FHU
   bgImage: /links/eden-poster.png
-  align: topLeft
 
 - id: instagram
   title: Instagram
