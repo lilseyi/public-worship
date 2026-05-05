@@ -3,6 +3,7 @@ import Container from "../ui/Container.astro";
 import Button from "../ui/Button.astro";
 import Logo from "../icons/Logo.astro";
 import MenuIcon from "../icons/MenuIcon.astro";
+import { asset } from "../../lib/asset";
 
 export interface Props {
   brand?: "public-worship" | "global-echo";
@@ -10,7 +11,7 @@ export interface Props {
 
 const { brand = "public-worship" } = Astro.props;
 
-const home = brand === "global-echo" ? "/ge" : "/";
+const home = asset(brand === "global-echo" ? "/ge" : "/");
 
 const navLinks = [
   { label: "About", href: `${home}#about` },

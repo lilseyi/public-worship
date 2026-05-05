@@ -19,7 +19,8 @@ const {
   brand = "public-worship",
 } = Astro.props;
 
-const faviconHref = asset("/favicon.svg");
+const faviconHref = asset("/favicon-pw.png");
+const appleTouchHref = asset("/apple-touch-icon.png");
 const ogImageHref = asset(ogImage);
 
 const fullTitle =
@@ -34,7 +35,8 @@ const fullTitle =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href={faviconHref} />
+    <link rel="shortcut icon" type="image/png" href={faviconHref} />
+    <link rel="apple-touch-icon" href={appleTouchHref} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

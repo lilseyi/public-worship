@@ -8,7 +8,8 @@ export interface Props {
 }
 
 const { brand = "public-worship" } = Astro.props;
-const home = brand === "global-echo" ? "/ge" : "/";
+const home = asset(brand === "global-echo" ? "/ge" : "/");
+const beliefsHref = asset("/beliefs");
 
 const navLinks = [
   { label: "About", href: `${home}#about` },
@@ -90,7 +91,7 @@ const socials = [
       >
         <span>© 2025, All Rights Reserved</span>
         <a
-          href="/beliefs"
+          href={beliefsHref}
           class="text-red-600 underline-offset-2 hover:underline"
           >Statement of Beliefs</a
         >

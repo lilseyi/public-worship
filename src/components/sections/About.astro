@@ -1,45 +1,108 @@
 ---
 import Container from "../ui/Container.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
+import { asset } from "../../lib/asset";
 
-const blocks = [
+// 3x2 asymmetric grid:
+//   Row 1: Mission (pink)  | Photo 1 | Vision (peach)
+//   Row 2: Photo 2          | Why Public (pink) | Photo 3
+type Cell =
+  | {
+      kind: "text";
+      title: string;
+      body: string;
+      bg: "pink" | "peach";
+    }
+  | { kind: "photo"; src: string };
+
+const cells: Cell[] = [
   {
+    kind: "text",
     title: "The Mission",
     body: "At Public Worship, we exist to create a holy experience through music — one that ignites unwavering faith in Jesus. We strive to move seeds from rocky ground into good soil, to produce fruits of genuine worship that reflects our bold identity in Christ.",
+    bg: "pink",
   },
+  { kind: "photo", src: asset("/images/event-1.png") },
   {
+    kind: "text",
     title: "The Vision",
     body: "Our vision is a world where nobody is ignorant to who Jesus is, and how he asks us to worship him — In spirit and in truth.",
+    bg: "peach",
   },
+  { kind: "photo", src: asset("/images/event-2.png") },
   {
+    kind: "text",
     title: "Why Public",
     body: "Worship was never meant to stay inside four walls. At Public Worship, we believe God's presence belongs in everyday places like streets, parks, trains, and the heart of the city. Jesus met people where they were, and we follow His example. When we lift up His name in public, He shows up. People who have never known Him can encounter His love, and lives are changed. This isn't just music — it's an invitation to meet Jesus.",
+    bg: "pink",
   },
+  { kind: "photo", src: asset("/images/event-3.png") },
 ];
+
+const bgClassMap = {
+  pink: "bg-pink-soft",
+  peach: "bg-peach",
+} as const;
+
+const titleClassMap = {
+  pink: "text-red-700",
+  peach: "text-amber-800",
+} as const;
+
+const wavyHref = asset("/decor/wavy-texture.svg");
 ---
 
 <section id="about" class="py-20 sm:py-28 scroll-mt-16">
-  <Container size="default">
-    <div data-animate="fade-up">
+  <Container size="wide">
+    <div data-animate="fade-up" class="mb-12 sm:mb-14">
       <SectionHeading eyebrow="About Us" align="center">
         Uniting Hearts, <span class="text-red-500">Changing Lives</span>
       </SectionHeading>
     </div>
 
-    <div class="mt-14 grid gap-10 md:grid-cols-3">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
       {
-        blocks.map((b, i) => (
-          <div
-            class="flex flex-col gap-3 text-center md:text-left"
-            data-animate="fade-up"
-            style={`--delay: ${i * 80}ms`}
-          >
-            <h3 class="font-display text-2xl font-semibold text-ink">
-              {b.title}
-            </h3>
-            <p class="text-ink/75 leading-relaxed">{b.body}</p>
-          </div>
-        ))
+        cells.map((cell, i) =>
+          cell.kind === "text" ? (
+            <article
+              class={`relative overflow-hidden rounded-3xl px-7 py-9 sm:px-9 sm:py-12 aspect-square flex flex-col justify-between ${bgClassMap[cell.bg]}`}
+              data-animate="fade-up"
+              style={`--delay: ${i * 60}ms`}
+            >
+              <h3
+                class={`relative z-[1] font-display text-2xl sm:text-3xl font-semibold ${titleClassMap[cell.bg]} max-w-[18ch]`}
+              >
+                {cell.title}
+              </h3>
+              <p class="relative z-[1] text-ink/85 leading-relaxed text-[0.95rem] sm:text-base max-w-prose">
+                {cell.body}
+              </p>
+              <img
+                src={wavyHref}
+                alt=""
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25"
+              />
+            </article>
+          ) : (
+            <div
+              class="overflow-hidden rounded-3xl aspect-square bg-ink/5"
+              data-animate="fade-up"
+              style={`--delay: ${i * 60}ms`}
+            >
+              <img
+                src={cell.src}
+                alt=""
+                aria-hidden="true"
+                class="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="800"
+              />
+            </div>
+          )
+        )
       }
     </div>
   </Container>

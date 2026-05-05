@@ -70,22 +70,29 @@ import { asset } from "../../lib/asset";
         >
           Make a Donation
         </Button>
-        <Button href="/ge" variant="outline" size="lg">About Public Worship</Button>
+        <Button href={asset("/ge")} variant="outline" size="lg">About Public Worship</Button>
       </div>
     </div>
   </Container>
 
   <Container size="wide" class="mt-12 sm:mt-16">
-    <div class="overflow-hidden rounded-3xl" data-animate="fade-up">
-      <img
-        src={asset("/images/event-1.png")}
-        alt="Public Worship gathering in the city"
-        class="w-full h-auto block"
-        width="1600"
-        height="900"
-        loading="eager"
-        fetchpriority="high"
-      />
+    <div
+      class="overflow-hidden rounded-3xl aspect-video bg-ink/10"
+      data-animate="fade-up"
+    >
+      <video
+        class="block h-full w-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster={asset("/images/event-1.png")}
+        aria-hidden="true"
+      >
+        <source src={asset("/videos/hero.webm")} type="video/webm" />
+        <source src={asset("/videos/hero.mp4")} type="video/mp4" />
+      </video>
     </div>
   </Container>
 </section>
