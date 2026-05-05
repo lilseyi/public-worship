@@ -60,15 +60,19 @@ const layoutClass =
       thumbSrc && (
         <img
           src={thumbSrc}
-          alt=""
-          class="mb-2 h-10 w-auto sm:h-12"
+          alt={title}
+          class="max-h-20 sm:max-h-24 w-auto object-contain"
           loading="lazy"
         />
       )
     }
-    <h3 class="font-display text-xl sm:text-2xl text-link-blue">
-      {title}
-    </h3>
+    {
+      !thumbSrc && (
+        <h3 class="font-display text-xl sm:text-2xl text-link-blue">
+          {title}
+        </h3>
+      )
+    }
     {subtitle && <p class="text-sm sm:text-base text-link-blue">{subtitle}</p>}
     {cta && <p class="text-sm text-link-blue">{cta}</p>}
   </div>

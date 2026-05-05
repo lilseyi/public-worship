@@ -70,7 +70,7 @@ const wavyHref = asset("/decor/wavy-texture.svg");
               style={`--delay: ${i * 60}ms`}
             >
               <h3
-                class={`relative z-[1] font-display text-2xl sm:text-3xl font-semibold ${titleClassMap[cell.bg]} max-w-[18ch]`}
+                class={`relative z-[1] font-display text-2xl sm:text-3xl font-normal ${titleClassMap[cell.bg]} max-w-[18ch]`}
               >
                 {cell.title}
               </h3>
@@ -81,7 +81,7 @@ const wavyHref = asset("/decor/wavy-texture.svg");
                 src={wavyHref}
                 alt=""
                 aria-hidden="true"
-                class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25"
+                class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-10 mix-blend-multiply"
               />
             </article>
           ) : (

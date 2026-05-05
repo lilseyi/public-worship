@@ -25,7 +25,7 @@
 - id: instagram
   title: Instagram
   url: https://instagram.com/publicworship.life
-  thumbnail: /icons/brand-instagram.svg
+  thumbnail: /links/instagram-photo.png
 
 - id: givebutter
   title: Donate
@@ -35,7 +35,7 @@
 - id: tiktok
   title: TikTok
   url: https://www.tiktok.com/@publicworship.life
-  thumbnail: /icons/brand-tiktok.svg
+  thumbnail: /links/tiktok-photo.png
 
 - id: zelle
   title: Donate Through Zelle
