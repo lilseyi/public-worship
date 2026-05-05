@@ -4,6 +4,9 @@ import Eyebrow from "./Eyebrow.astro";
 export interface Props {
   eyebrow?: string;
   eyebrowIcon?: "sparkle" | "pray";
+  /** Visual style for the eyebrow. Source uses a chip on most sections and a
+   * small inline label only on the FAQ heading. */
+  eyebrowSize?: "chip" | "sm";
   align?: "left" | "center";
   as?: "h1" | "h2";
   class?: string;
@@ -12,6 +15,7 @@ export interface Props {
 const {
   eyebrow,
   eyebrowIcon = "sparkle",
+  eyebrowSize = "chip",
   align = "center",
   as: Tag = "h2",
   class: className = "",
@@ -19,15 +23,19 @@ const {
 
 const alignClass =
   align === "center" ? "items-center text-center" : "items-start text-left";
+// Source: H1 68px / lh 1.08, H2 52px / lh 1.08.
 const headingSize =
   Tag === "h1"
-    ? "text-4xl sm:text-5xl md:text-6xl"
-    : "text-3xl sm:text-4xl md:text-5xl";
+    ? "text-4xl sm:text-5xl md:text-[68px]"
+    : "text-3xl sm:text-[42px] md:text-[52px]";
+const headingLeading =
+  Tag === "h1" ? "leading-[1.08]" : "leading-[1.08]";
+const eyebrowGap = eyebrowSize === "sm" ? "gap-1" : "gap-3";
 ---
 
-<div class={`flex flex-col gap-4 ${alignClass} ${className}`}>
-  {eyebrow && <Eyebrow icon={eyebrowIcon}>{eyebrow}</Eyebrow>}
-  <Tag class={`font-display font-normal leading-[1.05] ${headingSize}`}>
+<div class={`flex flex-col ${eyebrowGap} ${alignClass} ${className}`}>
+  {eyebrow && <Eyebrow icon={eyebrowIcon} size={eyebrowSize}>{eyebrow}</Eyebrow>}
+  <Tag class={`font-display font-normal ${headingLeading} ${headingSize}`}>
     <slot />
   </Tag>
   {

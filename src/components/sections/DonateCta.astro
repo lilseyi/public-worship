@@ -56,7 +56,7 @@ const cardRotations = ["-rotate-2", "rotate-1", "rotate-2"];
         <div class="mt-14 grid gap-4 sm:grid-cols-3">
           {cardImages.map((src, i) => (
             <div
-              class={`overflow-hidden rounded-3xl shadow-soft transform-gpu ${cardRotations[i]}`}
+              class={`overflow-hidden rounded-2xl transform-gpu ${cardRotations[i]}`}
               data-animate="fade-up"
               style={`--delay: ${i * 80}ms`}
             >

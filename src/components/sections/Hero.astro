@@ -5,14 +5,17 @@ import Container from "../ui/Container.astro";
 import { asset } from "../../lib/asset";
 ---
 
-<section class="relative pt-6 pb-12 sm:pt-12 sm:pb-20 overflow-hidden">
+<section class="relative pt-4 pb-10 sm:pt-8 sm:pb-16 overflow-hidden">
+  {/* Decor objects.
+   * Source positions (1280px viewport) place these near the page edges,
+   * partly off-canvas, with the upper pair pulled above the eyebrow line. */}
   <img
     src={asset("/decor/flag.svg")}
     alt=""
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: -20deg;"
-    class="hidden md:block absolute left-[7%] top-[12%] h-[110px] w-auto lg:h-[130px] origin-center"
+    class="hidden md:block absolute left-[2%] top-[60px] h-[110px] w-auto lg:h-[120px] origin-center"
   />
   <img
     src={asset("/decor/idea.svg")}
@@ -20,7 +23,7 @@ import { asset } from "../../lib/asset";
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: 30deg;"
-    class="hidden md:block absolute right-[8%] top-[10%] h-[110px] w-auto lg:h-[130px] origin-center"
+    class="hidden md:block absolute right-[2%] top-[40px] h-[150px] w-auto lg:h-[170px] origin-center"
   />
   <img
     src={asset("/decor/heart.svg")}
@@ -28,7 +31,7 @@ import { asset } from "../../lib/asset";
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: 15deg;"
-    class="hidden md:block absolute left-[5%] top-[55%] h-[120px] w-auto lg:h-[150px] origin-center"
+    class="hidden md:block absolute -left-[60px] top-[58%] h-[170px] w-auto lg:h-[200px] origin-center"
   />
   <img
     src={asset("/decor/sunny.svg")}
@@ -36,7 +39,7 @@ import { asset } from "../../lib/asset";
     aria-hidden="true"
     data-animate="hero-object"
     style="--rot: -15deg;"
-    class="hidden md:block absolute right-[7%] top-[55%] h-[110px] w-auto lg:h-[140px] origin-center"
+    class="hidden md:block absolute -right-[60px] top-[58%] h-[170px] w-auto lg:h-[200px] origin-center"
   />
 
   <div class="md:hidden flex justify-center gap-3 mb-6 px-5">
@@ -46,17 +49,20 @@ import { asset } from "../../lib/asset";
   </div>
 
   <Container size="default" class="relative">
-    <div class="flex flex-col items-center text-center gap-6" data-animate="fade-up">
+    <div class="flex flex-col items-center text-center gap-7" data-animate="fade-up">
       <Eyebrow>Worship with us</Eyebrow>
 
+      {/* H1 size from source: 68px / 1.08. Corben at 700 weight is too heavy
+       * because the font ships only 400 / 700; we keep font-normal here. */}
       <h1
-        class="font-display font-normal text-ink leading-[1.1] text-4xl sm:text-5xl md:text-6xl max-w-3xl"
+        class="font-display font-normal text-ink leading-[1.08] text-4xl sm:text-5xl md:text-[68px] max-w-3xl"
       >
         Together, Let's Forge a Future of
         <span class="text-red-500">Bold and Radical Jesus Worship</span>
       </h1>
 
-      <p class="max-w-prose text-base sm:text-lg text-ink/70">
+      {/* Source: 20px / 1.44, full ink color, max-width 480px. */}
+      <p class="max-w-[480px] text-lg sm:text-xl leading-[1.44] text-ink">
         We're building a Revelations 7:9 future where every nation, tribe and
         tongue will worship God in spirit and in truth.
       </p>
@@ -75,9 +81,10 @@ import { asset } from "../../lib/asset";
     </div>
   </Container>
 
-  <Container size="wide" class="mt-12 sm:mt-16">
+  {/* Source video container is roughly 3:2 (1184x792) with 16px radius. */}
+  <Container size="wide" class="mt-12 sm:mt-14">
     <div
-      class="overflow-hidden rounded-3xl aspect-video bg-ink/10"
+      class="overflow-hidden rounded-2xl aspect-[3/2] bg-ink/10"
       data-animate="fade-up"
     >
       <video

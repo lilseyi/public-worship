@@ -29,17 +29,19 @@ const externalAttrs = isExternal
   ? { target: "_blank", rel: "noopener noreferrer" }
   : {};
 
+// Source: padding 48px, 16px radius, flat #F9DFDF background, no aspect ratio
+// constraint (height tracks content, ~110px for logo cards).
 const layoutClass =
   align === "topLeft"
-    ? "items-start text-left p-6 sm:p-8"
-    : "items-center justify-center text-center p-6 sm:p-8";
+    ? "items-start text-left p-8 sm:p-10"
+    : "items-center justify-center text-center p-8 sm:p-12";
 ---
 
 <a
   href={url}
   {...externalAttrs}
   aria-label={title}
-  class="group relative block aspect-[5/3] overflow-hidden rounded-3xl bg-pink-soft transition-transform hover:-translate-y-0.5"
+  class="group relative block min-h-[150px] overflow-hidden rounded-2xl bg-pink-softer transition-transform hover:-translate-y-0.5"
 >
   {
     bgSrc && (
