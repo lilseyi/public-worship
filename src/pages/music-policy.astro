@@ -1,0 +1,1204 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/ui/Container.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import Button from "../components/ui/Button.astro";
+import { asset } from "../lib/asset";
+
+const sections = [
+  { id: "who-we-are", label: "Who we are" },
+  { id: "posture", label: "Our posture" },
+  { id: "official-release", label: "What counts as an Official Release" },
+  { id: "demos", label: "Demos, greenlit releases, and unreleased songs" },
+  { id: "rights", label: "The rights we separate" },
+  { id: "writer-share", label: "Writer share" },
+  { id: "splits", label: "How splits get decided" },
+  { id: "publishing", label: "Publishing structure" },
+  { id: "master", label: "Master ownership and why" },
+  { id: "participation", label: "Master income participation" },
+  { id: "splits-example", label: "Example: putting the splits together" },
+  { id: "four-paths", label: "Contribution and compensation: the four paths" },
+  { id: "rate-sheet", label: "Rate sheet" },
+  { id: "cash-conditional", label: "On cash availability" },
+  { id: "net-income", label: "Net master income" },
+  { id: "roles", label: "Roles" },
+  { id: "royalty-types", label: "Royalty types in plain language" },
+  { id: "departures", label: "Departures and continuity" },
+  { id: "artist-freedom", label: "Artist freedom and non-exclusivity" },
+  { id: "ministry-use", label: "Ministry use and sensitive use" },
+  { id: "future", label: "If the ministry's structure changes" },
+  { id: "agreements", label: "Release agreement requirement" },
+  { id: "summary", label: "Default structure at a glance" },
+  { id: "closing", label: "Closing" },
+];
+
+const rateSheet = [
+  { role: "Lead producer (full song)", cash: "$500", equity: "5%", note: "Indie tier $300–$1,500/song; emerging-producer floor $500." },
+  { role: "Co-producer", cash: "$250", equity: "2%", note: "Roughly half a producer slot — common 50/50 split." },
+  { role: "Recording engineer (tracking)", cash: "$200", equity: "1.5%", note: "Indie tracking $50–$150/hr × 3–5 hrs." },
+  { role: "Mix engineer", cash: "$400", equity: "3%", note: "Mid-tier indie pro mixing sweet spot." },
+  { role: "Mastering engineer", cash: "$125", equity: "0.75%", note: "Independent mid-tier mastering $75–$150/song." },
+  { role: "Vocal producer", cash: "$250", equity: "2%", note: "Sub-discipline of producing — typically half a producer fee." },
+  { role: "Arranger", cash: "$200", equity: "1.5%", note: "Per-minute arranging $50–$90/min × ~4 min." },
+  { role: "Featured vocalist", cash: "$300", equity: "3%", note: "Indie/worship featured vocal $150–$500/song." },
+  { role: "Background vocalist", cash: "$125", equity: "0.75%", note: "Clears AFM single-song minimum; indie BGV $75–$200." },
+  { role: "Session instrumentalist", cash: "$125", equity: "0.75%", note: "Same AFM floor; indie session $75–$250." },
+  { role: "Marketing / rollout lead", cash: "$500", equity: "3%", note: "Indie boutique PR campaign floor." },
+  { role: "Cash contribution to release budget", cash: "1:1", equity: "1% per $100 contributed", note: "Lets primary artists or supporters fund part of the budget." },
+];
+
+const summaryTable = [
+  { category: "Writer share", value: "100% to writers per split sheet" },
+  { category: "Publisher share", value: "50% Public Worship Publishing, 50% to writers per their splits" },
+  { category: "Master ownership", value: "100% Public Worship" },
+  { category: "Master income participation", value: "Up to 50% of net to artists/contributors, by agreement" },
+  { category: "Cash fees", value: "Conditional on each release's budget; never guaranteed" },
+  { category: "Recoupment", value: "Capped per release, no cross-collateralization, agreed in writing" },
+  { category: "Artist career", value: "Non-exclusive" },
+  { category: "Departure", value: "Existing participation continues; future releases negotiated fresh" },
+  { category: "Release requirement", value: "No release without written agreement" },
+];
+---
+
+<BaseLayout
+  title="Music Release & Royalty Policy"
+  description="How Public Worship handles songwriting, publishing, master ownership, and contributor participation for official releases."
+>
+  <section class="py-12 sm:py-16">
+    <Container size="default">
+      <SectionHeading eyebrow="Policy" align="left" as="h1">
+        Music Release & <span class="text-red-500">Royalty Policy</span>
+      </SectionHeading>
+      <p class="mt-6 max-w-prose text-base sm:text-lg text-ink/80 leading-relaxed">
+        How we steward songs, honor contributors, and build a worship catalog
+        with transparency. This is the canonical policy document. For a
+        plain-language walkthrough by role, see
+        <a href={asset("/collaborate")} class="text-red-500 underline-offset-2 hover:underline">/collaborate</a>.
+      </p>
+    </Container>
+  </section>
+
+  <section class="pb-8">
+    <Container size="default">
+      <div class="rounded-2xl bg-pink-softer/40 border border-pink-soft/60 p-6 sm:p-8">
+        <p class="font-display text-lg font-normal text-ink">In this document</p>
+        <ol class="mt-4 grid gap-x-8 gap-y-1.5 sm:grid-cols-2 list-decimal list-inside text-sm text-ink/85">
+          {sections.map((s) => (
+            <li>
+              <a href={`#${s.id}`} class="text-ink hover:text-red-500 underline-offset-2 hover:underline">
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </Container>
+  </section>
+
+  <section class="pb-24">
+    <Container size="default">
+      <div class="max-w-prose pw-prose text-ink/85 leading-relaxed">
+        <article id="who-we-are" class="scroll-mt-24 mt-12 first:mt-0">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">1. Who we are</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Public Worship is an independent nonprofit worship ministry. We
+              are not affiliated with or owned by any specific church,
+              denomination, or political organization.
+            </p>
+            <p>
+              Every member of our team — creative, production, operations,
+              fundraising — currently serves as a volunteer. No one at Public
+              Worship draws a salary, and no individual owns or profits from
+              the ministry. When this document refers to
+              <strong class="font-semibold">"Public Worship's share,"</strong>
+              it means money that flows back into the next song, the next
+              gathering, equipment, travel, and the mission. Not into anyone's
+              pocket.
+            </p>
+            <p>
+              We release music under the Public Worship name in collaboration
+              with songwriters, artists, producers, musicians, and engineers.
+              This policy explains how we handle songwriting, publishing,
+              master ownership, and contributor participation for official
+              releases.
+            </p>
+            <p class="text-sm text-ink/70">
+              This page is a ministry policy summary, not legal advice. Final
+              terms for every release are documented in writing before the
+              song is released.
+            </p>
+          </div>
+        </article>
+
+        <article id="posture" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">2. Our posture</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Public Worship is not a record label. We are a nonprofit
+              building a worship catalog under a shared name, holding two
+              things together at once:
+            </p>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li>
+                <strong class="font-semibold">Creative honor.</strong> Real
+                credit, real ownership, real compensation for what people
+                actually contribute.
+              </li>
+              <li>
+                <strong class="font-semibold">Faithful stewardship.</strong>
+                Enough control over official releases to keep songs available,
+                protect the ministry, and fund the next one.
+              </li>
+            </ol>
+            <p>
+              The volunteer foundation matters for understanding the rest of
+              this document. Public Worship pays for studio time, mixing,
+              mastering, distribution, and rollout costs. Public Worship
+              absorbs the songs that don't take off. When a song does take
+              off, Public Worship's share is what makes the next ten possible.
+              The math has to work for the catalog to keep growing.
+            </p>
+          </div>
+        </article>
+
+        <article id="official-release" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">3. What counts as an Official Public Worship Release</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              An Official Public Worship Release is a song or recording
+              intentionally released under the Public Worship artist name,
+              brand, or platform. This may include:
+            </p>
+            <ul class="list-disc pl-6 space-y-1.5">
+              <li>Songs written during Public Worship writing sessions</li>
+              <li>Songs developed through Public Worship retreats or camps</li>
+              <li>Songs recorded for the Public Worship artist profile</li>
+              <li>Live recordings from Public Worship gatherings</li>
+              <li>Songs released as <em>Public Worship feat. [Artist]</em> or <em>Public Worship & [Artist]</em></li>
+              <li>Songs commissioned or intentionally developed for a Public Worship project</li>
+            </ul>
+            <p>
+              A song is <strong class="font-semibold">not</strong> automatically an Official Public
+              Worship Release just because someone from the team helped write,
+              produce, or play on it. The song must be clearly designated as
+              official and agreed to in writing. If a song was started in our
+              space but everyone involved agrees it's not a Public Worship
+              release, it's not.
+            </p>
+          </div>
+        </article>
+
+        <article id="demos" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">4. Demos, greenlit releases, and unreleased songs</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Public Worship sessions, retreats, and writing camps generate
+              far more songs than will ever be released. This is normal and
+              healthy. Not every idea is meant to leave the room. We choose
+              songs for release intentionally and selectively.
+            </p>
+            <p>
+              <strong class="font-semibold">Greenlit for release.</strong> A
+              song becomes an Official Public Worship Release only when
+              Public Worship explicitly <em>greenlights</em> it for a specific
+              project, cycle, or release plan. Greenlight is a written
+              designation — not implied by enthusiasm in the room or by a
+              song being well-received in a session.
+            </p>
+            <p>
+              <strong class="font-semibold">The compensation framework only applies to greenlit songs.</strong>
+              The cash fee, master income participation, and donation paths
+              described in <a href="#four-paths">§11</a> apply only to songs
+              Public Worship has greenlit for release. Songs that are
+              written, demoed, or workshopped in Public Worship sessions but
+              not greenlit do not generate compensation under that framework.
+            </p>
+            <p>
+              <strong class="font-semibold">Selection is stewardship, not judgment.</strong>
+              Releasing a song costs Public Worship real money — studio,
+              mixing, mastering, distribution, marketing, time. Each release
+              is an investment of nonprofit resources in a particular song.
+              We will not be able to greenlight every song, and a song not
+              being chosen is not a judgment of the people involved. It is a
+              stewardship call about what fits the project, the cycle, and
+              the catalog.
+            </p>
+            <p>
+              <strong class="font-semibold">Demo recordings belong to Public Worship.</strong>
+              Any recording made with Public Worship resources — studio
+              time, equipment, engineering, session leadership — is owned by
+              Public Worship as a recording, including unreleased demos.
+              That is true regardless of whether the song is ever greenlit.
+            </p>
+            <p>
+              <strong class="font-semibold">Songs that aren't greenlit can be released back to the writers on request.</strong>
+              If a song was written in a Public Worship context and Public
+              Worship has not greenlit it for release, any writer on that
+              song may request a formal release of the
+              <em>composition</em> back to them, free of any Public Worship
+              publishing or administrative claim.
+            </p>
+            <p>
+              In most cases, that request will be granted. Public Worship
+              reserves the right to decline if the song is being actively
+              considered for a future project or cycle. If we decline, we
+              will say so clearly, name what we are considering it for, and
+              let the writer know when we will revisit.
+            </p>
+            <p>
+              When Public Worship grants a song release back to the writers,
+              the writers are free to re-record and release the song as
+              their own work, with no Public Worship involvement — no
+              publishing share, no master claim, no encumbrance. The
+              original demo recording remains owned by Public Worship, but
+              Public Worship will not commercially release that demo
+              without the writers' written agreement.
+            </p>
+
+            <div class="mt-2 overflow-x-auto rounded-xl border border-ink/10">
+              <table class="w-full text-sm">
+                <thead class="bg-pink-softer/40 text-ink">
+                  <tr>
+                    <th class="px-4 py-3 text-left font-display font-normal">Status</th>
+                    <th class="px-4 py-3 text-left font-display font-normal">Demo recording</th>
+                    <th class="px-4 py-3 text-left font-display font-normal">Composition</th>
+                    <th class="px-4 py-3 text-left font-display font-normal">Compensation</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-ink/10">
+                  <tr>
+                    <td class="px-4 py-3 align-top">Greenlit as Official Release</td>
+                    <td class="px-4 py-3 align-top">Owned by PW</td>
+                    <td class="px-4 py-3 align-top">PW Publishing structure applies</td>
+                    <td class="px-4 py-3 align-top">Yes</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 align-top">Held for future consideration</td>
+                    <td class="px-4 py-3 align-top">Owned by PW</td>
+                    <td class="px-4 py-3 align-top">Writers retain writer share; no PW publishing claim until greenlit</td>
+                    <td class="px-4 py-3 align-top">No</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-3 align-top">Released back to writers on request</td>
+                    <td class="px-4 py-3 align-top">Owned by PW; not commercially released without writer consent</td>
+                    <td class="px-4 py-3 align-top">100% to writers, free of PW involvement</td>
+                    <td class="px-4 py-3 align-top">No</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <article id="rights" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">5. The rights we separate</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>Music rights get tangled, so we keep them in clear lanes.</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>
+                <strong class="font-semibold">Songwriting / composition</strong> — the song itself: lyrics,
+                melody, chord structure, core composition. Public Worship
+                honors writing contributions through the writer share,
+                allocated by split sheet.
+              </li>
+              <li>
+                <strong class="font-semibold">Publishing</strong> — the administrative and stewardship
+                side of the song. Public Worship Publishing holds and
+                administers the publisher share for official releases.
+              </li>
+              <li>
+                <strong class="font-semibold">Master recording</strong> — the actual recording people
+                stream. One song can have multiple masters (studio, live,
+                acoustic, remix). Public Worship owns the official master.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="writer-share" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">6. Writer share</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              <strong class="font-semibold">Public Worship takes 0% of the writer share.</strong>
+              The full writer share is allocated to those who contributed to
+              the writing of the song, per the agreed split sheet.
+            </p>
+            <p>
+              If you contributed to lyrics, melody, or composition, you are
+              on the split. If you only performed, produced, mixed,
+              engineered, or played, that is a real and honored contribution
+              but doesn't enter the writer share.
+            </p>
+            <p>
+              Public Worship's role as commissioner and steward of the
+              release is reflected in the publisher share and in master
+              ownership, not by taking a piece of writer credit. We honor
+              writing by leaving it whole.
+            </p>
+          </div>
+        </article>
+
+        <article id="splits" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">7. How splits get decided</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Songs aren't always tidy. They start as a voice memo, a prayer
+              moment, a chord progression someone carried for months, a
+              chorus that emerged in a room of people building together. We
+              don't pretend we can always know the splits at the first
+              session.
+            </p>
+            <p>Our process:</p>
+            <ol class="list-decimal pl-6 space-y-1.5">
+              <li>Create and develop the song</li>
+              <li>Track contributors honestly as the song forms</li>
+              <li>Discuss splits once the song is substantially formed</li>
+              <li>Complete a split sheet</li>
+              <li>Complete a release agreement</li>
+              <li>Release only after the agreement is signed</li>
+            </ol>
+            <p>
+              <strong class="font-semibold">No Public Worship song is released until the necessary contributors have agreed in writing to splits and release terms.</strong>
+              This protects the song, the ministry, and the relationships
+              around it.
+            </p>
+          </div>
+        </article>
+
+        <article id="publishing" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">8. Publishing structure</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>For Official Public Worship Releases:</p>
+            <ul class="list-disc pl-6 space-y-1.5">
+              <li><strong class="font-semibold">Writers keep 100% of writer share.</strong></li>
+              <li><strong class="font-semibold">Public Worship Publishing retains 50% of the publisher share.</strong></li>
+              <li><strong class="font-semibold">The remaining 50% of the publisher share is split among writers</strong> according to their writer splits.</li>
+            </ul>
+            <p>
+              Public Worship's 50% of the publisher share reflects the
+              ministry's role as the originator and steward of the official
+              release: commissioning the song, providing the room and the
+              platform, paying for production, registering and administering
+              the song with CCLI and PROs, and stewarding the catalog over
+              time. It is held by Public Worship Publishing as part of the
+              release, not as a service fee.
+            </p>
+
+            <div class="mt-2 rounded-xl bg-cream-soft border border-ink/10 p-5">
+              <p class="font-display font-normal text-base text-ink">Example</p>
+              <p class="mt-2 text-sm">
+                A song's writer splits are Artist A 50%, Writer B 30%,
+                Producer/Writer C 20%. The publisher share splits:
+              </p>
+              <table class="mt-3 w-full text-sm">
+                <thead>
+                  <tr class="text-left">
+                    <th class="px-2 py-2 font-display font-normal">Party</th>
+                    <th class="px-2 py-2 font-display font-normal text-right">Publisher share</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-ink/10">
+                  <tr><td class="px-2 py-2">Public Worship Publishing</td><td class="px-2 py-2 text-right">50%</td></tr>
+                  <tr><td class="px-2 py-2">Artist A</td><td class="px-2 py-2 text-right">25%</td></tr>
+                  <tr><td class="px-2 py-2">Writer B</td><td class="px-2 py-2 text-right">15%</td></tr>
+                  <tr><td class="px-2 py-2">Producer/Writer C</td><td class="px-2 py-2 text-right">10%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <article id="master" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">9. Master ownership and why</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Public Worship owns and controls the official master
+              recordings released under the Public Worship name unless
+              otherwise agreed in writing.
+            </p>
+            <p>
+              We want to be honest about why, because this is the part of
+              the policy that most resembles a label deal. It isn't, but
+              the reasons matter:
+            </p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>
+                <strong class="font-semibold">Catalog continuity.</strong>
+                Worship songs need to remain available for decades,
+                regardless of how individual relationships evolve. Team
+                members move, sign elsewhere, change paths, sometimes step
+                away from faith. A catalog scattered across former
+                volunteers' personal accounts is unworkable. Owning the
+                master means a song keeps serving its purpose even when the
+                people around it change.
+              </li>
+              <li>
+                <strong class="font-semibold">Clean rights for future opportunities.</strong>
+                Distribution, sync, and licensing deals require unambiguous
+                ownership. Splitting masters across many parties makes those
+                opportunities slow or impossible.
+              </li>
+              <li>
+                <strong class="font-semibold">Mission protection.</strong>
+                We can decline uses that contradict the ministry's purpose.
+              </li>
+              <li>
+                <strong class="font-semibold">Reinvestment.</strong>
+                Master income funds the next session. Our nonprofit form
+                makes this enforceable — there are no shareholders.
+              </li>
+            </ul>
+            <p>
+              We are not buying anyone's career. Public Worship is the
+              principal behind official releases — the songs are made under
+              our name, on our platform, with our resources, in service of
+              our mission. Master ownership reflects that, and it ensures
+              the songs remain available for the worshipers, gatherings,
+              and ministry contexts that Public Worship serves, regardless
+              of how individual relationships evolve.
+            </p>
+          </div>
+        </article>
+
+        <article id="participation" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">10. Master income participation</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Owning the master is different from being the only one who
+              shares in the income.
+            </p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>
+                <strong class="font-semibold">Master ownership</strong> = control of the recording (distribution, licensing, takedowns, sync approval).
+              </li>
+              <li>
+                <strong class="font-semibold">Master income participation</strong> = a contractual right to a percentage of net master income, without ownership.
+              </li>
+            </ul>
+            <p>
+              For Official Public Worship Releases, the default is that
+              Public Worship owns 100% of the master and grants master
+              income participation to primary artists and key contributors
+              based on their role and contribution.
+            </p>
+            <p>
+              <strong class="font-semibold">Participation cap.</strong>
+              Public Worship may allocate up to <strong class="font-semibold">50% of net master income</strong>
+              among approved primary artists and key contributors. Public
+              Worship retains at least 50% for mission reinvestment as a
+              default. If proposed allocations across all contributors
+              would exceed the 50% cap, see the reconciliation procedure
+              in <a href="#cap-reconciliation">§11</a>.
+            </p>
+            <p>
+              <strong class="font-semibold">Primary Artist baseline.</strong>
+              Where a release has a named Primary Artist, that artist
+              receives a baseline <strong class="font-semibold">15% of net master income per release</strong>
+              under the Primary Artist Agreement. This is automatic for
+              Primary Artist relationships and reflects the value of
+              carrying the named-artist identity, performance, and ongoing
+              brand relationship.
+            </p>
+            <p>
+              Additional roles a Primary Artist takes on the same release —
+              writing, producing, vocal producing, playing, contributing
+              cash to the budget — are compensated separately under the
+              rate sheet (see <a href="#four-paths">§11</a>). A Primary
+              Artist who also produces, for example, receives the 15%
+              baseline plus the producer equity, cash, or donation path
+              for that role. All allocations together remain within the
+              50% contributor cap.
+            </p>
+          </div>
+        </article>
+
+        <article id="splits-example" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">Example: putting the splits together</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Here is what the agreed splits for an Official Public Worship
+              Release might look like once everything has been negotiated
+              and documented. The numbers below are illustrative — actual
+              percentages will vary by song.
+            </p>
+            <p class="text-sm text-ink/70">
+              In practice, what is shown below as a single document is
+              typically captured across several agreements signed at the
+              same time: a split sheet, a master release agreement, a
+              master participation agreement, and primary artist or
+              contributor agreements as applicable. See
+              <a href="#agreements">§21</a> for the full list.
+            </p>
+
+            <div class="mt-2 rounded-2xl border border-ink/15 bg-cream-soft p-6 sm:p-8">
+              <p class="font-display font-normal text-xl text-ink">
+                RELEASE SPLITS — "Song Title"
+              </p>
+              <dl class="mt-3 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-[14rem_1fr]">
+                <dt class="text-ink/70">Date written</dt><dd>2026-XX-XX</dd>
+                <dt class="text-ink/70">Date of release agreement</dt><dd>2026-XX-XX</dd>
+                <dt class="text-ink/70">Greenlit for</dt><dd>Public Worship — [Project / EP / Single]</dd>
+              </dl>
+
+              <p class="mt-6 font-display font-normal text-base text-ink">Writers and writer shares</p>
+              <p class="mt-1 text-xs text-ink/60">
+                Public Worship takes 0% of the writer share — see
+                <a href="#writer-share">§6</a>.
+              </p>
+              <div class="mt-2 overflow-x-auto rounded-xl border border-ink/10 bg-cream">
+                <table class="w-full text-sm">
+                  <thead class="bg-pink-softer/40 text-ink">
+                    <tr>
+                      <th class="px-3 py-2 text-left font-display font-normal">Writer</th>
+                      <th class="px-3 py-2 text-left font-display font-normal">PRO</th>
+                      <th class="px-3 py-2 text-left font-display font-normal">IPI / CAE</th>
+                      <th class="px-3 py-2 text-right font-display font-normal">Writer share</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-ink/10">
+                    <tr><td class="px-3 py-2">Artist A</td><td class="px-3 py-2">ASCAP</td><td class="px-3 py-2 font-mono text-xs">000000000</td><td class="px-3 py-2 text-right">50%</td></tr>
+                    <tr><td class="px-3 py-2">Writer B</td><td class="px-3 py-2">BMI</td><td class="px-3 py-2 font-mono text-xs">000000000</td><td class="px-3 py-2 text-right">30%</td></tr>
+                    <tr><td class="px-3 py-2">Producer/Writer C</td><td class="px-3 py-2">ASCAP</td><td class="px-3 py-2 font-mono text-xs">000000000</td><td class="px-3 py-2 text-right">20%</td></tr>
+                    <tr class="bg-cream-soft"><td class="px-3 py-2 font-medium" colspan="3">Total writer share</td><td class="px-3 py-2 text-right font-medium">100%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="mt-6 font-display font-normal text-base text-ink">Publishing</p>
+              <p class="mt-1 text-xs text-ink/60">
+                PW Publishing 50% + writer publishing 50% (split among writers per their writer shares) — see
+                <a href="#publishing">§8</a>.
+              </p>
+              <div class="mt-2 overflow-x-auto rounded-xl border border-ink/10 bg-cream">
+                <table class="w-full text-sm">
+                  <thead class="bg-pink-softer/40 text-ink">
+                    <tr>
+                      <th class="px-3 py-2 text-left font-display font-normal">Party</th>
+                      <th class="px-3 py-2 text-right font-display font-normal">Publisher share</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-ink/10">
+                    <tr><td class="px-3 py-2">Public Worship Publishing</td><td class="px-3 py-2 text-right">50%</td></tr>
+                    <tr><td class="px-3 py-2">Artist A (writer publishing)</td><td class="px-3 py-2 text-right">25%</td></tr>
+                    <tr><td class="px-3 py-2">Writer B (writer publishing)</td><td class="px-3 py-2 text-right">15%</td></tr>
+                    <tr><td class="px-3 py-2">Producer/Writer C (writer publishing)</td><td class="px-3 py-2 text-right">10%</td></tr>
+                    <tr class="bg-cream-soft"><td class="px-3 py-2 font-medium">Total</td><td class="px-3 py-2 text-right font-medium">100%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p class="mt-6 font-display font-normal text-base text-ink">Master income participation</p>
+              <p class="mt-1 text-xs text-ink/60">
+                Owner of the master: Public Worship (100%). Allocations
+                below distribute net master income — see
+                <a href="#participation">§10</a> and the four paths in
+                <a href="#four-paths">§11</a>.
+              </p>
+              <div class="mt-2 overflow-x-auto rounded-xl border border-ink/10 bg-cream">
+                <table class="w-full text-sm">
+                  <thead class="bg-pink-softer/40 text-ink">
+                    <tr>
+                      <th class="px-3 py-2 text-left font-display font-normal">Party</th>
+                      <th class="px-3 py-2 text-left font-display font-normal">Path chosen</th>
+                      <th class="px-3 py-2 text-right font-display font-normal">Master share</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-ink/10">
+                    <tr><td class="px-3 py-2">Public Worship</td><td class="px-3 py-2 text-ink/70">Mission share (default)</td><td class="px-3 py-2 text-right">80%</td></tr>
+                    <tr><td class="px-3 py-2">Artist A <span class="text-ink/60">(primary artist)</span></td><td class="px-3 py-2 text-ink/70">Primary Artist baseline (§10)</td><td class="px-3 py-2 text-right">15%</td></tr>
+                    <tr><td class="px-3 py-2">Producer/Writer C <span class="text-ink/60">(lead producer)</span></td><td class="px-3 py-2 text-ink/70">Master income participation (in lieu of $500 cash)</td><td class="px-3 py-2 text-right">5%</td></tr>
+                    <tr class="bg-cream-soft"><td class="px-3 py-2 font-medium" colspan="2">Total</td><td class="px-3 py-2 text-right font-medium">100%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="mt-2 text-xs text-ink/60">
+                Note: Writer B contributed only to composition (no recording
+                role), so they receive writer share and writer publishing
+                but no master participation. If Writer B had also performed
+                or produced on the recording, they would have chosen one of
+                the four paths for that role.
+              </p>
+
+              <p class="mt-6 font-display font-normal text-base text-ink">Acknowledgement and signatures</p>
+              <p class="mt-2 text-sm text-ink/85">
+                By signing below, each party confirms that the splits above
+                are accurate and final, that no other person contributed in
+                a way that would entitle them to a writer share, and that
+                Public Worship Publishing is authorized to administer the
+                publishing share allocated to Public Worship. Master income
+                participation is granted on the terms set out in the master
+                release agreement and master participation agreement signed
+                concurrently with this summary.
+              </p>
+              <ul class="mt-4 space-y-3 text-sm text-ink/80">
+                <li class="flex flex-wrap items-end gap-x-4 gap-y-1">
+                  <span class="min-w-[10rem]">Artist A</span>
+                  <span class="flex-1 border-b border-ink/40">&nbsp;</span>
+                  <span>Date: <span class="inline-block min-w-[6rem] border-b border-ink/40">&nbsp;</span></span>
+                </li>
+                <li class="flex flex-wrap items-end gap-x-4 gap-y-1">
+                  <span class="min-w-[10rem]">Writer B</span>
+                  <span class="flex-1 border-b border-ink/40">&nbsp;</span>
+                  <span>Date: <span class="inline-block min-w-[6rem] border-b border-ink/40">&nbsp;</span></span>
+                </li>
+                <li class="flex flex-wrap items-end gap-x-4 gap-y-1">
+                  <span class="min-w-[10rem]">Producer/Writer C</span>
+                  <span class="flex-1 border-b border-ink/40">&nbsp;</span>
+                  <span>Date: <span class="inline-block min-w-[6rem] border-b border-ink/40">&nbsp;</span></span>
+                </li>
+                <li class="flex flex-wrap items-end gap-x-4 gap-y-1">
+                  <span class="min-w-[10rem]">Public Worship</span>
+                  <span class="flex-1 border-b border-ink/40">&nbsp;</span>
+                  <span>Date: <span class="inline-block min-w-[6rem] border-b border-ink/40">&nbsp;</span></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article id="four-paths" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">11. Contribution and compensation: the four paths</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Public Worship believes contributors should know exactly what
+              their contribution is worth and exactly what they will receive
+              for it — before the song is made.
+            </p>
+            <p>
+              For every contributor role on an Official Public Worship
+              Release, Public Worship publishes a rate sheet defining (1)
+              the cash fee for that role at market rate, and (2) the
+              equivalent master income participation that may be taken in
+              lieu of the cash fee. Both are predefined, not negotiated per
+              release. See the <a href="#rate-sheet">rate sheet</a> below.
+            </p>
+            <p>
+              Before recording, every contributor chooses one of the
+              following paths, recorded in writing as part of the release
+              agreement:
+            </p>
+
+            <div class="mt-2 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-xl bg-pink-softer/40 border border-pink-soft/60 p-5">
+                <p class="font-display font-normal text-lg text-ink">1. Cash fee</p>
+                <p class="mt-2 text-sm text-ink/85">
+                  Receive the published rate as a one-time payment.
+                  Available <em>when funded</em>: depends on the budget for
+                  that specific release. See <a href="#cash-conditional">§13</a>.
+                </p>
+              </div>
+              <div class="rounded-xl bg-pink-softer/40 border border-pink-soft/60 p-5">
+                <p class="font-display font-normal text-lg text-ink">2. Master income participation</p>
+                <p class="mt-2 text-sm text-ink/85">
+                  In lieu of the cash fee, receive the predefined
+                  percentage of net master income for that release. Always
+                  available — funded from future income, not current cash.
+                </p>
+              </div>
+              <div class="rounded-xl bg-pink-softer/40 border border-pink-soft/60 p-5">
+                <p class="font-display font-normal text-lg text-ink">3. Donation to mission</p>
+                <p class="mt-2 text-sm text-ink/85">
+                  Contribute your work as an in-kind gift to the nonprofit.
+                  Receive credit and our gratitude. As a 501(c)(3), Public
+                  Worship can document the in-kind donation for tax
+                  purposes where applicable. Always available.
+                </p>
+              </div>
+              <div class="rounded-xl bg-pink-softer/40 border border-pink-soft/60 p-5">
+                <p class="font-display font-normal text-lg text-ink">4. Decline</p>
+                <p class="mt-2 text-sm text-ink/85">
+                  If none of the above work for you on a given release,
+                  that's a real and honored answer. Saying no doesn't damage
+                  your standing or your future opportunities with us.
+                </p>
+              </div>
+            </div>
+
+            <p class="mt-4">
+              <strong class="font-semibold">All four paths are equally valued.</strong>
+              Choosing cash does not make a contributor less invested in
+              the mission. Choosing participation is not greedy — it is a
+              contributor accepting the risk that the song may not perform.
+              Choosing donation is not "the pure" option — it is one of
+              four honorable answers. Declining is honored too.
+            </p>
+            <p>
+              We do not track which contributors chose which path as a
+              measure of commitment, and we will not imply that contributors
+              who choose donation or equity are more spiritual, more
+              committed, or more deserving of future opportunities than
+              contributors who need cash.
+            </p>
+            <p id="cap-reconciliation">
+              The total master income participation across all contributors
+              on a release is capped at <strong class="font-semibold">50% of net master income</strong>.
+              If contributors' chosen paths would exceed that cap, Public
+              Worship resolves the constraint <strong class="font-semibold">before</strong>
+              the agreement is signed — never after — using the following
+              order of operations:
+            </p>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li>
+                <strong class="font-semibold">Surface the math early, in front of everyone.</strong>
+                As soon as proposed allocations approach or exceed the
+                cap, all contributors see the full picture and the gap.
+                Reconciliation never happens in private with one person.
+              </li>
+              <li>
+                <strong class="font-semibold">Re-offer the four paths.</strong>
+                Contributors who would have taken equity may opt for cash,
+                a partial cash + partial equity split, donation, or
+                declining once they see the constraint. The four paths
+                exist for exactly this reason — the same contribution can
+                be expressed in different forms.
+              </li>
+              <li>
+                <strong class="font-semibold">Pro-rata reduction of non-baseline equity.</strong>
+                If the cap is still exceeded after re-offering paths, all
+                <em>non-baseline</em> equity allocations are reduced
+                proportionally so the total fits under 50%. The 15%
+                Primary Artist baseline (see <a href="#participation">§10</a>)
+                is preserved as a guarantee. Contributors whose equity is
+                reduced may also revisit their path choice.
+              </li>
+              <li>
+                <strong class="font-semibold">Reshape or pause.</strong>
+                If reconciliation still isn't reachable, the release does
+                not go forward in its current form. We may reshape the
+                team, postpone until the budget allows, or set the song
+                aside (consistent with <a href="#cash-conditional">§13</a>).
+              </li>
+            </ol>
+            <p>
+              <strong class="font-semibold">Exceptions.</strong>
+              Public Worship may approve allocations beyond the 50% cap in
+              writing for unusual cases. This is rare, requires explicit
+              sign-off, and is never implied by anyone's agreement.
+            </p>
+          </div>
+        </article>
+
+        <article id="rate-sheet" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">12. Rate sheet</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              These rates reflect Public Worship's current season — a New
+              York City–based volunteer ministry releasing its first songs
+              and building a catalog from zero.
+            </p>
+            <p>
+              They are anchored to independent-artist market rates: what
+              working indie producers, engineers, and session players
+              actually charge in 2025–2026. They are not major-label rates,
+              and they are not a "ministry discount." We want every
+              contributor's cash option to be a fair offer — not a number
+              they feel pressured to refuse.
+            </p>
+            <p>
+              As the ministry grows and our catalog generates real income,
+              this sheet will be revised upward on a published cadence. The
+              people building this music should share in what they help
+              create.
+            </p>
+
+            <p class="text-sm text-ink/70">
+              <strong class="font-semibold">Effective:</strong> 2026.
+              <strong class="font-semibold"> Next scheduled review:</strong> end of 2027.
+              All rates are per song unless noted.
+            </p>
+
+            <div class="mt-2 overflow-x-auto rounded-xl border border-ink/10">
+              <table class="w-full text-sm">
+                <thead class="bg-pink-softer/40 text-ink">
+                  <tr>
+                    <th class="px-4 py-3 text-left font-display font-normal">Role</th>
+                    <th class="px-4 py-3 text-right font-display font-normal">Cash fee</th>
+                    <th class="px-4 py-3 text-right font-display font-normal">Master participation</th>
+                    <th class="px-4 py-3 text-left font-display font-normal">Source range</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-ink/10">
+                  {rateSheet.map((row) => (
+                    <tr>
+                      <td class="px-4 py-3 align-top">{row.role}</td>
+                      <td class="px-4 py-3 align-top text-right font-medium">{row.cash}</td>
+                      <td class="px-4 py-3 align-top text-right font-medium">{row.equity}</td>
+                      <td class="px-4 py-3 align-top text-ink/70">{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p class="text-sm text-ink/70 mt-2">
+              <strong class="font-semibold">Note:</strong> rates are per song,
+              not per session. A producer who works on three songs is paid
+              for three songs.
+            </p>
+          </div>
+        </article>
+
+        <article id="cash-conditional" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">13. On cash availability</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Public Worship is a new nonprofit with no commercial track
+              record and no recurring revenue from music yet. We can't
+              always offer cash payment on every release.
+            </p>
+            <p>
+              <strong class="font-semibold">What we can always offer:</strong>
+              master income participation (equity in the song's future net
+              income) and in-kind donation (a tax-deductible gift to the
+              ministry). These are available on every release because they
+              don't require cash on hand.
+            </p>
+            <p>
+              <strong class="font-semibold">What we may or may not be able to offer:</strong>
+              a cash fee. This depends on the specific budget for the
+              specific release. Some releases will fully fund the rate
+              sheet. Some will fund part. Some will fund none. We will tell
+              you exactly what cash is available for your role
+              <em>before</em> you decide which path to take — never after.
+            </p>
+
+            <div class="mt-2 rounded-xl bg-pink-softer/40 border border-pink-soft/60 p-5">
+              <p class="font-display font-normal text-lg text-ink">If cash matters to you and we can't fund it</p>
+              <p class="mt-2 text-sm">You have three options, all honored equally:</p>
+              <ol class="mt-2 list-decimal pl-5 space-y-1 text-sm">
+                <li>Take equity or donate instead — your choice.</li>
+                <li>Take a partial cash fee plus partial equity, if that fits the budget. We can structure mixed paths.</li>
+                <li>Decline this release. We will not be hurt or offended, and it does not affect future opportunities.</li>
+              </ol>
+            </div>
+
+            <p>
+              If too many contributors need cash that we cannot fund for a
+              particular release, the release may not move forward in its
+              current form. We may reshape the team, postpone until the
+              budget is available, or set the song aside. We would rather
+              pause a release than push a contributor toward an option that
+              isn't right for them.
+            </p>
+
+            <p>
+              <strong class="font-semibold">Release budget transparency.</strong>
+              Before any contributor signs onto a release, Public Worship
+              will share in writing: the total cash budget for the release;
+              the cash budget allocated to each role; and whether the rate
+              sheet's going rate is fully, partially, or not funded for
+              each role. Contributors choose their path based on what's
+              actually being offered, not on assumptions about what might
+              be available.
+            </p>
+          </div>
+        </article>
+
+        <article id="net-income" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">14. Net master income</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Master income participation is calculated on
+              <strong class="font-semibold">net</strong> master income — money actually received by
+              Public Worship, after applicable third-party fees and the
+              agreed recoupable costs for that specific release.
+            </p>
+            <p>Standard deductions:</p>
+            <ul class="list-disc pl-6 space-y-1.5">
+              <li>Distributor and platform fees</li>
+              <li>Collection and admin fees</li>
+              <li>Refunds, chargebacks, taxes</li>
+              <li>Approved third-party costs</li>
+              <li>The agreed recoupable release costs for that song</li>
+            </ul>
+            <p>
+              <strong class="font-semibold">Recoupment commitments.</strong>
+              Only documented, agreed expenses count. We do not add costs
+              retroactively. A song's recoupment is limited to its own
+              costs; losses on one song are not applied against income from
+              another. We provide annual statements showing gross income,
+              deductions, and net for every release with active
+              participation.
+            </p>
+
+            <div class="mt-2 rounded-xl bg-cream-soft border border-ink/10 p-5">
+              <p class="font-display font-normal text-base text-ink">Example</p>
+              <table class="mt-3 w-full text-sm">
+                <tbody class="divide-y divide-ink/10">
+                  <tr><td class="px-2 py-2">Gross master income</td><td class="px-2 py-2 text-right">$10,000</td></tr>
+                  <tr><td class="px-2 py-2">Distributor fee</td><td class="px-2 py-2 text-right">−$1,500</td></tr>
+                  <tr><td class="px-2 py-2 font-medium">Net received by PW</td><td class="px-2 py-2 text-right font-medium">$8,500</td></tr>
+                </tbody>
+              </table>
+              <p class="mt-3 text-sm">
+                If a primary artist holds 50% participation, they receive
+                $4,250 and PW retains $4,250.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article id="roles" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">15. Roles</h2>
+          <div class="mt-4 flex flex-col gap-6">
+            <div>
+              <h3 class="font-display font-normal text-xl text-ink">Primary Artist</h3>
+              <p class="mt-2">
+                Someone Public Worship is intentionally building with over
+                time — shaping the sound, the writing, the worship
+                identity, and the catalog. May receive: primary or featured
+                credit, songwriting ownership where applicable, publisher
+                share where applicable, honorarium where available, master
+                income participation, and ongoing collaboration.
+              </p>
+              <p class="mt-2">
+                <strong class="font-semibold">Master income baseline: 15% of net master income per release</strong>,
+                granted automatically under the Primary Artist Agreement.
+                Additional roles on the same release (writing, producing,
+                playing, cash contribution) earn additional compensation
+                separately under the four paths (see
+                <a href="#participation">§10</a>,
+                <a href="#four-paths">§11</a>).
+              </p>
+              <p class="mt-2">
+                When we enter a Primary Artist relationship, we commit in
+                writing to specifics: which releases, the 15% baseline plus
+                any agreed adjustments for that artist's contribution
+                pattern, what we'll do for them in terms of platform
+                support, and what the off-ramp looks like (see
+                <a href="#departures">§17</a>).
+              </p>
+            </div>
+            <div>
+              <h3 class="font-display font-normal text-xl text-ink">Featured Artist</h3>
+              <p class="mt-2">
+                Someone prominently featured on a specific release without
+                long-term catalog commitment. May receive: featured credit,
+                songwriting ownership where applicable, publisher share
+                where applicable, cash fee or honorarium, master income
+                participation if agreed.
+              </p>
+            </div>
+            <div>
+              <h3 class="font-display font-normal text-xl text-ink">Contributor</h3>
+              <p class="mt-2">
+                Producers, musicians, engineers, arrangers, mixers, creative
+                directors. May receive: credit, fee or honorarium where
+                available, songwriting ownership only if they contributed
+                to composition, master income participation if agreed.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article id="royalty-types" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">16. Royalty types in plain language</h2>
+          <div class="mt-4 flex flex-col gap-3">
+            <p>
+              <strong class="font-semibold">Writer royalties</strong> — paid
+              to songwriters for the composition. Public Worship takes 0%.
+            </p>
+            <p>
+              <strong class="font-semibold">Publisher royalties</strong> —
+              paid to the publisher. PW Publishing keeps 50%; writers split
+              the other 50% per their writer splits.
+            </p>
+            <p>
+              <strong class="font-semibold">Mechanical royalties</strong> —
+              generated when the composition is reproduced or distributed.
+              Tied to the song, not the recording.
+            </p>
+            <p>
+              <strong class="font-semibold">Performance royalties</strong> —
+              generated when the composition is publicly performed (radio,
+              live, streaming, TV). Tied to writer and publisher rights.
+            </p>
+            <p>
+              <strong class="font-semibold">Master royalties</strong> —
+              generated by the recording itself: Spotify/Apple master-side
+              income, YouTube, distributor revenue, sync master fees,
+              neighboring rights. PW owns the master; approved contributors
+              receive participation from net master income.
+            </p>
+            <p>
+              <strong class="font-semibold">Sync licensing</strong> — when a
+              song is used with visual media. Two permissions are needed:
+              composition (writers/publishers control) and master (PW
+              controls).
+            </p>
+          </div>
+        </article>
+
+        <article id="departures" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">17. Departures and continuity</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>Ministry relationships change. To make sure that doesn't break trust:</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>
+                <strong class="font-semibold">A Primary Artist who leaves on good terms keeps their existing master income participation on existing releases.</strong>
+                Participation that has been earned and agreed continues. The
+                catalog itself stays with Public Worship.
+              </li>
+              <li>
+                <strong class="font-semibold">Future releases after departure are negotiated separately.</strong>
+                A Primary Artist relationship doesn't auto-renew; new
+                participation requires new agreement.
+              </li>
+            </ul>
+            <p>
+              If a former contributor wants to discuss a re-release or
+              alternate version of a song they helped create, that's a
+              conversation we're open to having relationally — but Public
+              Worship's stewardship of the official catalog is not
+              conditional on activity level or revisited on a clock.
+            </p>
+          </div>
+        </article>
+
+        <article id="artist-freedom" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">18. Artist freedom and non-exclusivity</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Public Worship does not own anyone's career. Unless otherwise
+              agreed in writing, artists remain free to:
+            </p>
+            <ul class="list-disc pl-6 space-y-1.5">
+              <li>Release their own music</li>
+              <li>Sign their own label or publishing deals</li>
+              <li>Work with other ministries or artists</li>
+              <li>Perform outside of Public Worship</li>
+              <li>Build their own artist profile and catalog</li>
+            </ul>
+            <p>
+              For Official Public Worship Releases, Public Worship controls
+              the official master released under the Public Worship name —
+              not your other work, not your other songs, not your career.
+            </p>
+          </div>
+        </article>
+
+        <article id="ministry-use" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">19. Ministry use and sensitive use</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Public Worship retains the right to use official releases for
+              ministry purposes — gatherings, live events, social, video,
+              training, archives, testimony, nonprofit campaigns.
+            </p>
+            <p>
+              We will not knowingly license official master recordings for
+              uses materially inconsistent with our Christian mission
+              (hateful content, sexually explicit content, political
+              endorsements, brand uses that would harm the ministry or the
+              artist), without further review and consent.
+            </p>
+            <p>
+              If a sync request feels close to the line, we'll consult the
+              primary artist before approving it, even where we have
+              unilateral rights to do so.
+            </p>
+          </div>
+        </article>
+
+        <article id="future" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">20. If the ministry's structure changes</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Right now, no one at Public Worship draws a salary. If that
+              changes — if we eventually hire staff to sustain the ministry
+              — we commit to:
+            </p>
+            <ul class="list-disc pl-6 space-y-1.5">
+              <li>Naming it openly, not quietly</li>
+              <li>Continuing to put the majority of master income back into the mission</li>
+              <li>Reviewing this policy with active artists before material changes</li>
+            </ul>
+            <p>
+              We don't think becoming a salaried organization is wrong. But
+              the moral logic of the 50/50 floor depends on knowing where
+              the money goes, so we'll tell you when the answer changes.
+            </p>
+          </div>
+        </article>
+
+        <article id="agreements" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">21. Release agreement requirement</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              No Official Public Worship Release goes live until the
+              relevant agreements are signed. Depending on the song, that
+              may include:
+            </p>
+            <ul class="list-disc pl-6 space-y-1.5">
+              <li>Song split sheet</li>
+              <li>Master release agreement</li>
+              <li>Producer / featured artist / primary artist / contributor agreement</li>
+              <li>Publishing or admin agreement</li>
+              <li>Work-for-hire or volunteer service agreement where applicable</li>
+              <li>Master income participation agreement where applicable</li>
+              <li>Per-release budget and recoupment list</li>
+            </ul>
+            <p>
+              This protects everyone. No release with unclear ownership,
+              unclear credits, or unresolved expectations.
+            </p>
+          </div>
+        </article>
+
+        <article id="summary" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">22. Default structure at a glance</h2>
+          <div class="mt-4 overflow-x-auto rounded-xl border border-ink/10">
+            <table class="w-full text-sm">
+              <thead class="bg-pink-softer/40 text-ink">
+                <tr>
+                  <th class="px-4 py-3 text-left font-display font-normal">Category</th>
+                  <th class="px-4 py-3 text-left font-display font-normal">Default</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-ink/10">
+                {summaryTable.map((row) => (
+                  <tr>
+                    <td class="px-4 py-3 align-top font-medium">{row.category}</td>
+                    <td class="px-4 py-3 align-top">{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article id="closing" class="scroll-mt-24 mt-16">
+          <h2 class="font-display font-normal text-3xl sm:text-4xl text-ink">23. Closing</h2>
+          <div class="mt-4 flex flex-col gap-4">
+            <p>
+              Public Worship exists to worship Jesus publicly, disciple
+              people through worship, and steward songs that help the
+              church encounter God. We want our music process to reflect
+              that mission — creative freedom in the room, clarity in the
+              paperwork, generosity in the splits, transparency in the
+              math.
+            </p>
+            <p>
+              Before any official release, we commit to having the
+              necessary conversations, documenting the agreement, and
+              making sure everyone understands how the song will be
+              stewarded. If you ever feel something in this policy isn't
+              being honored, tell us — we would rather rework an agreement
+              than damage a relationship.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-16 flex flex-wrap gap-4">
+        <Button href={asset("/collaborate")} variant="primary" size="md">
+          Walk through this by role
+        </Button>
+        <Button href="mailto:hello@publicworship.life" variant="outline" size="md">
+          Talk to us
+        </Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
