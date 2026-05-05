@@ -2,6 +2,7 @@
 import Container from "../ui/Container.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 import Button from "../ui/Button.astro";
+import { asset } from "../../lib/asset";
 
 export interface Props {
   eyebrow?: string;
@@ -14,6 +15,13 @@ const {
   heading,
   showCards = false,
 } = Astro.props;
+
+const cardImages = [
+  asset("/images/event-1.png"),
+  asset("/images/event-2.png"),
+  asset("/images/event-3.png"),
+];
+const cardRotations = ["-rotate-2", "rotate-1", "rotate-2"];
 ---
 
 <section class="py-20 sm:py-28">
@@ -42,5 +50,29 @@ const {
         Make a Donation
       </Button>
     </div>
+
+    {
+      showCards && (
+        <div class="mt-14 grid gap-4 sm:grid-cols-3">
+          {cardImages.map((src, i) => (
+            <div
+              class={`overflow-hidden rounded-3xl shadow-soft transform-gpu ${cardRotations[i]}`}
+              data-animate="fade-up"
+              style={`--delay: ${i * 80}ms`}
+            >
+              <img
+                src={src}
+                alt=""
+                class="aspect-square w-full object-cover"
+                loading="eager"
+                decoding="async"
+                width="800"
+                height="800"
+              />
+            </div>
+          ))}
+        </div>
+      )
+    }
   </Container>
 </section>

@@ -15,7 +15,7 @@ const entries = await getCollection("links");
       </SectionHeading>
     </div>
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
       {
         entries.map((entry, i) => (
           <div data-animate="fade-up" style={`--delay: ${i * 70}ms`}>
