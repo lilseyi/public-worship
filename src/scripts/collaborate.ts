@@ -11,7 +11,7 @@ const ENTRY_ID = "entry";
 
 const history: string[] = [];
 
-function show(id: string, push = true): void {
+function show(id: string, push = true, scroll = true): void {
   const target = document.getElementById(id);
   if (!target) return;
 
@@ -28,19 +28,20 @@ function show(id: string, push = true): void {
     if (current !== id) history.push(id);
   }
 
-  // Keep the user oriented by scrolling to the top of the chooser when
-  // moving between screens.
-  const wrapper = document.getElementById("collab-flow");
-  if (wrapper) {
-    wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (scroll) {
+    const wrapper = document.getElementById("collab-flow");
+    if (wrapper) {
+      wrapper.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 }
 
 function init(): void {
-  // Initial screen: entry.
+  // Initial screen: entry. Don't scroll on first paint — the user just
+  // arrived and should start at the top of the page, not the chooser.
   if (!document.getElementById(ENTRY_ID)) return;
   history.length = 0;
-  show(ENTRY_ID);
+  show(ENTRY_ID, true, false);
 
   document.querySelectorAll<HTMLElement>(TARGET).forEach((btn) => {
     btn.addEventListener("click", (e) => {
