@@ -20,7 +20,6 @@ const rateSheet = [
   { role: "Background vocalist", cash: "$125", equity: "0.75%" },
   { role: "Session instrumentalist", cash: "$125", equity: "0.75%" },
   { role: "Marketing / rollout lead", cash: "$500", equity: "3%" },
-  { role: "Cash contribution to release budget", cash: "1:1", equity: "1% per $100 contributed" },
 ];
 
 // Per-role line shown inside relevant leaves.
@@ -58,7 +57,7 @@ const rateRow = (role: string) => {
         <p class="font-display text-lg font-normal text-ink">Two things to know before you start</p>
         <ol class="mt-3 list-decimal pl-6 space-y-2 text-sm text-ink/85">
           <li>
-            <strong class="font-semibold">Public Worship is an independent volunteer-run nonprofit.</strong>
+            <strong class="font-semibold">Public Worship is a volunteer-run initiative of Global Echo Charitable Co., a 501(c)(3) nonprofit.</strong>
             No one on the team draws a salary. When we talk about "Public
             Worship's share," it goes back into the next song, the next
             gathering, equipment, and the mission — not into anyone's
@@ -173,10 +172,6 @@ const rateRow = (role: string) => {
             <span class="font-display font-normal text-lg text-ink">Session instrumentalist</span>
             <span class="mt-1 block text-sm text-ink/70">Played an instrument on the recording.</span>
           </button>
-          <button type="button" data-collab-target="leaf-greenlit-cash-contributor" class="text-left rounded-xl border border-ink/15 bg-cream-soft p-5 hover:border-red-500 hover:shadow-soft transition-all">
-            <span class="font-display font-normal text-lg text-ink">I contributed cash to the release budget</span>
-            <span class="mt-1 block text-sm text-ink/70">Funded part of the production or marketing budget.</span>
-          </button>
           <button type="button" data-collab-target="leaf-greenlit-multiple" class="text-left rounded-xl border border-ink/15 bg-cream-soft p-5 hover:border-red-500 hover:shadow-soft transition-all sm:col-span-2">
             <span class="font-display font-normal text-lg text-ink">Multiple roles, or my situation isn't above</span>
             <span class="mt-1 block text-sm text-ink/70">Let's talk it through.</span>
@@ -206,7 +201,7 @@ const rateRow = (role: string) => {
             <li>Your full writer share on anything you wrote (Public Worship takes 0% of writer share).</li>
             <li>Your share of the publisher pool that flows to writers.</li>
             <li><strong class="font-semibold">15 master points (15% of net master income) per release</strong> as the Primary Artist baseline, granted automatically under the Primary Artist Agreement (see <a href={asset("/music-policy#participation")}>§10</a>).</li>
-            <li>Additional points for any other roles you take on the same release — writing, producing, vocal producing, playing, contributing cash to the budget — under the four paths in the rate sheet, on top of the 15-point baseline.</li>
+            <li>Additional points for any other roles you take on the same release — writing, producing, vocal producing, playing — under the four paths in the rate sheet, on top of the 15-point baseline.</li>
             <li>Cash fee or honorarium where the release budget allows. We'll tell you what's funded for your role on this specific release before you choose a path.</li>
             <li>Ongoing collaboration — your relationship with us isn't a one-song contract.</li>
           </ul>
@@ -318,24 +313,6 @@ const rateRow = (role: string) => {
           <p><strong class="font-semibold">Rate sheet:</strong> session instrumentalist — <strong class="font-semibold">{rateRow("Session instrumentalist").cash}</strong> cash or <strong class="font-semibold">{rateRow("Session instrumentalist").equity}</strong> equity, per song, per instrument.</p>
           <p><strong class="font-semibold">Playing vs. songwriting:</strong> playing on the recording doesn't grant songwriting ownership unless you also contributed to lyrics, melody, or composition.</p>
           <FourPaths />
-        </div>
-        <CollabFooter />
-      </div>
-
-      {/* Cash contributor to budget */}
-      <div id="leaf-greenlit-cash-contributor" data-collab-screen hidden>
-        <NavBar />
-        <h2 class="font-display font-normal text-2xl sm:text-3xl text-ink">You're funding part of a release budget</h2>
-        <div class="mt-4 pw-prose text-ink/85 leading-relaxed flex flex-col gap-4">
-          <p>You're contributing cash toward production or marketing for a greenlit release — typically as a primary artist supporting your own rollout, or as a supporter helping a release get off the ground.</p>
-          <p><strong class="font-semibold">Conversion:</strong> {rateRow("Cash contribution to release budget").equity}, capped at the release's overall participation pool.</p>
-          <p><strong class="font-semibold">How it works:</strong></p>
-          <ul class="list-disc pl-6 space-y-1.5">
-            <li>The contribution amount and what it funds (production, marketing, etc.) are documented in the release budget before recording.</li>
-            <li>Equity earned through cash contribution sits within the same 50% participation cap as other contributors. We'll surface the full picture before agreement so the cap isn't hit by surprise.</li>
-            <li>Cash contributions are a path, not an obligation — Public Worship is not soliciting investments. This exists for primary artists who want to help fund their own releases or supporters with a relationship to the project.</li>
-          </ul>
-          <p><strong class="font-semibold">What this is not:</strong> a pay-to-play marketplace open to outside investors. We do not sell master participation to the public.</p>
         </div>
         <CollabFooter />
       </div>
