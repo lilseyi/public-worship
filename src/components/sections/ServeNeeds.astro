@@ -1,33 +1,23 @@
 ---
-const currentNeeds = ["Video Editors", "Color Graders"];
-
-const futureNeeds = [
+const needs = [
+  "Video Editors",
+  "Color Graders",
+  "Cinematographers",
   "Live Sound Engineers",
+  "Studio Mixing Engineers",
   "Graphic Designers",
+  "Merch Designers",
+  "Digital Marketers / Advertisers",
+  "Songwriters",
   "Event Planners",
   "Project Managers",
-  "Songwriters",
-  "Cinematographers",
   "Greeters",
 ];
 ---
 
-<div class="grid gap-10 sm:grid-cols-2 max-w-3xl">
-  <div>
-    <h3 class="font-display text-xl font-normal text-ink mb-3">
-      Current Needs (As of Sept 2025)
-    </h3>
-    <ul class="flex flex-col gap-1 text-ink/80">
-      {currentNeeds.map((n) => <li>– {n}</li>)}
-    </ul>
-  </div>
-
-  <div>
-    <h3 class="font-display text-xl font-normal text-ink mb-3">
-      Anticipated Needs for 2026
-    </h3>
-    <ul class="flex flex-col gap-1 text-ink/80">
-      {futureNeeds.map((n) => <li>– {n}</li>)}
-    </ul>
-  </div>
+<div class="max-w-3xl">
+  <h3 class="font-display text-xl font-normal text-ink mb-3">2026 Needs</h3>
+  <ul class="grid gap-1 text-ink/80 sm:grid-cols-2">
+    {needs.map((n) => <li>– {n}</li>)}
+  </ul>
 </div>

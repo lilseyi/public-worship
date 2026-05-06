@@ -10,14 +10,12 @@ export interface Props {
 const { brand = "public-worship" } = Astro.props;
 const home = asset(brand === "global-echo" ? "/ge" : "/");
 const beliefsHref = asset("/beliefs");
-const collaborateHref = asset("/collaborate");
 
 const navLinks = [
   { label: "About", href: `${home}#about` },
   { label: "Impact", href: `${home}#impact` },
   { label: "Links", href: `${home}#links` },
   { label: "FAQ", href: `${home}#faq` },
-  { label: "Collaborate", href: collaborateHref },
 ];
 ---
 
