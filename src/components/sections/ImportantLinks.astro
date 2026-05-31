@@ -13,7 +13,7 @@ const entries = await getCollection("links");
       class="flex flex-col items-center gap-3 text-center mb-12 sm:mb-14"
       data-animate="fade-up"
     >
-      <Eyebrow icon="pray">Public Worship</Eyebrow>
+      <Eyebrow icon="sparkle">Public Worship</Eyebrow>
       {/* Source H2: 52px / 1.08 / Corben 400. */}
       <h2
         class="font-display font-normal leading-[1.08] text-3xl sm:text-[42px] md:text-[52px]"
@@ -33,6 +33,7 @@ const entries = await getCollection("links");
               thumbnail={entry.data.thumbnail}
               bgImage={entry.data.bgImage}
               cta={entry.data.cta}
+              copy={entry.data.copy}
               align={entry.data.align}
             />
           </div>

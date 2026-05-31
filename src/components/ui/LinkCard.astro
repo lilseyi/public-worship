@@ -4,10 +4,11 @@ import { asset } from "../../lib/asset";
 export interface Props {
   title: string;
   subtitle?: string;
-  url: string;
+  url?: string;
   thumbnail?: string;
   bgImage?: string;
   cta?: string;
+  copy?: string;
   align?: "center" | "topLeft";
 }
 
@@ -18,16 +19,26 @@ const {
   thumbnail,
   bgImage,
   cta,
+  copy,
   align = "center",
 } = Astro.props;
 
 const thumbSrc = thumbnail ? asset(thumbnail) : null;
 const bgSrc = bgImage ? asset(bgImage) : null;
 
-const isExternal = /^https?:|^mailto:/.test(url);
-const externalAttrs = isExternal
-  ? { target: "_blank", rel: "noopener noreferrer" }
-  : {};
+// When `copy` is set the card is a click-to-copy button (no navigation);
+// otherwise it's a link.
+const isCopy = Boolean(copy);
+const isExternal = !isCopy && url ? /^https?:|^mailto:/.test(url) : false;
+const Tag = isCopy ? "button" : "a";
+const tagAttrs = isCopy
+  ? { type: "button", "data-copy": copy }
+  : {
+      href: url,
+      ...(isExternal
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {}),
+    };
 
 // Source: padding 48px, 16px radius, flat #F9DFDF background, no aspect ratio
 // constraint (height tracks content, ~110px for logo cards).
@@ -37,11 +48,10 @@ const layoutClass =
     : "items-center justify-center text-center p-8 sm:p-12";
 ---
 
-<a
-  href={url}
-  {...externalAttrs}
+<Tag
+  {...tagAttrs}
   aria-label={title}
-  class="group relative block min-h-[150px] overflow-hidden rounded-2xl bg-pink-softer transition-transform hover:-translate-y-0.5"
+  class="group relative block w-full min-h-[150px] cursor-pointer appearance-none overflow-hidden rounded-2xl bg-pink-softer transition-transform hover:-translate-y-0.5"
 >
   {
     bgSrc && (
@@ -75,8 +85,37 @@ const layoutClass =
           </h3>
         )}
         {subtitle && <p class="text-sm sm:text-base text-link-blue">{subtitle}</p>}
-        {cta && <p class="text-sm text-link-blue">{cta}</p>}
+        {cta && <p class="text-sm text-link-blue" data-cta>{cta}</p>}
       </div>
     )
   }
-</a>
+</Tag>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.getAttribute("data-copy");
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      const cta = btn.querySelector("[data-cta]");
+      if (cta) {
+        const prev = cta.textContent;
+        cta.textContent = "Copied!";
+        setTimeout(() => {
+          cta.textContent = prev;
+        }, 1500);
+      }
+    });
+  });
+</script>

@@ -15,6 +15,15 @@
 #           featured (true | false)
 # =====================================================================
 
+- id: givebutter
+  title: Donate
+  subtitle: "(Card, Apple Pay, Venmo, ACH)"
+  url: https://givebutter.com/publicworship
+
+- id: scavenger-hunt
+  title: Scavenger Hunt
+  url: https://scavenger-hunt-beryl.vercel.app/
+
 - id: eden
   title: Eden Worship & Picnic — Public Worship presents
   url: https://partiful.com/e/yJRnupvB4MTHSMkN4FHU
@@ -25,11 +34,6 @@
   url: https://instagram.com/publicworship.life
   thumbnail: /links/instagram-photo.png
 
-- id: givebutter
-  title: Donate
-  subtitle: "(Card, Apple Pay, Venmo, ACH)"
-  url: https://givebutter.com/publicworship
-
 - id: tiktok
   title: TikTok
   url: https://www.tiktok.com/@publicworship.life
@@ -38,5 +42,5 @@
 - id: zelle
   title: Donate Through Zelle
   subtitle: give@publicworship.life
-  url: mailto:give@publicworship.life
+  copy: give@publicworship.life
   cta: "(Click to Copy)"
