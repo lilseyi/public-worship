@@ -37,11 +37,23 @@ function show(id: string, push = true, scroll = true): void {
 }
 
 function init(): void {
-  // Initial screen: entry. Don't scroll on first paint — the user just
-  // arrived and should start at the top of the page, not the chooser.
   if (!document.getElementById(ENTRY_ID)) return;
   history.length = 0;
-  show(ENTRY_ID, true, false);
+
+  // Deep-link support: if the URL hash points at a screen (e.g. a leaf we sent
+  // a courted artist directly), open that screen and seed history so "Back"
+  // returns to the entry chooser. Non-screen anchors (#rate-sheet) fall through
+  // to the browser's native scroll.
+  const hashId = window.location.hash.slice(1);
+  const hashTarget = hashId ? document.getElementById(hashId) : null;
+  if (hashTarget?.matches(SCREEN)) {
+    history.push(ENTRY_ID);
+    show(hashId, true, true);
+  } else {
+    // Initial screen: entry. Don't scroll on first paint — the user just
+    // arrived and should start at the top of the page, not the chooser.
+    show(ENTRY_ID, true, false);
+  }
 
   document.querySelectorAll<HTMLElement>(TARGET).forEach((btn) => {
     btn.addEventListener("click", (e) => {
