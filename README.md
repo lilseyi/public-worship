@@ -1,11 +1,17 @@
 # Public Worship
 
+> **📦 This repo has moved.** The publicworship.life site now lives in
+> [`Supa-Media/events-os`](https://github.com/Supa-Media/events-os) at
+> `apps/landing/`, deployed via Cloudflare alongside the rest of the
+> Public Worship platform. Make all edits there — changes here no longer
+> deploy. This repo is kept as a read-only archive of the site's history.
+
 The website for [Public Worship](https://publicworship.life), a non-profit
 bringing bold, public Jesus worship into the streets, parks, and trains of
 New York City — and the [Global Echo Charitable](/ge) 501(c)(3) that funds it.
 
 Open-source, MIT-licensed. Built with [Astro](https://astro.build) +
-[Tailwind CSS](https://tailwindcss.com), deployed to GitHub Pages.
+[Tailwind CSS](https://tailwindcss.com), formerly deployed to GitHub Pages.
 
 ## Quick edits — no terminal required
 
